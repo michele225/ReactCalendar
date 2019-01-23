@@ -159,7 +159,11 @@ class Calendar extends React.Component {
             isClosingEvent: false
 
         });
-        console.log(day)
+        let newDay;
+        newDay = day.toString().substring(4,15);
+        let re = new RegExp(" ", "g");
+        var dayToDb = newDay.replace(re, "-");
+        console.log(dayToDb)
         console.log(id)
     };
 
