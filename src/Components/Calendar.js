@@ -1,42 +1,21 @@
 import React from "react";
 import dateFns from "date-fns";
 
-class NewCalendar extends React.Component {
-
-    state = {
-        currentMonth: new Date(),
-        selectedDate: new Date(),
-        over: false
-    };
+class Calendar extends React.Component {
 
 
-    renderEvent(){
-        return(
-            <div className="NoteContainer">
-                <div className="container">
-                    <h2 className="Noteh2">Inserisci un evento</h2>
-                    <form>
-                        <input type="text" className="email NoteInput" placeholder="Tipo di evento"/>
-                            <br/>
-                            <input type="text" className="pwd NoteInput" placeholder="EVENTO"/>
-                    </form>
-
-                    <br/>
-                    <button className="register NoteButton">
-                        <span className="NoteSpan">register</span>
-                    </button>
-                    <button className="signin NoteButton">
-                        <span>sign in</span>
-                    </button>
-                    <h3 className="Noteh3">Evento aggiunto con successo :)</h3>
-                    <div className="reg"></div>
-                    <div className="sig"></div>
-
-
-                </div>
-            </div>
-        );
+    constructor(props){
+        super(props);
+        this.state = {
+            currentMonth: new Date(),
+            selectedDate: new Date(),
+            over: false,
+            isAddingEvent: false,
+            isClosingEvent: false
+        }
     }
+
+
 
     renderHeader() {
         const dateFormat = "MMMM YYYY";
@@ -124,13 +103,61 @@ class NewCalendar extends React.Component {
         return <div className="body">{rows}</div>;
     }
 
+    renderEvent(){
+        return(
+            <div className="NoteContainer">
+                <div className="container">
+                    <h2 className="Noteh2">Inserisci un evento</h2>
+                    <form>
+                        <input type="text" className="email NoteInput" placeholder="Tipo di evento" ref={(input) => this.getTipeEvent = input}/>
+                        <br/>
+                        <input type="text" className="pwd NoteInput" placeholder="EVENTO" ref={(input) => this.getEvent = input}/>
+                    </form>
+
+                    <br/>
+                    <button className="register NoteButton"  onClick={this.addEvent}>
+                        <span className="NoteSpan">Save</span>
+                    </button>
+                    <button className="signin NoteButton" onClick={this.closeEvent}>
+                        <span>Close</span>
+                    </button>
+                    <h3 className="Noteh3">Evento aggiunto con successo :)</h3>
+                    <div className="reg"></div>
+                    <div className="sig"></div>
+
+
+                </div>
+            </div>
+        );
+    }
+
+    addEvent = (e) =>{
+        e.preventDefault();
+        const requestBody = {
+            TypeEevnt: this.getTipeEvent.value,
+            Event: this.getEvent.value
+        }
+        console.log(this.getTipeEvent.value)
+        console.log(this.getEvent.value)
+        this.props.addEvent(requestBody)
+    }
+
+    closeEvent = () =>{
+        this.setState({
+            isClosingEvent:true
+        })
+    }
+
     onMouseOver = () => {
         this.setState({over: true})
     }
 
     onDateClick = (day, id) => {
         this.setState({
-            selectedDate: day
+            selectedDate: day,
+            isAddingEvent : true,
+            isClosingEvent: false
+
         });
         console.log(day)
         console.log(id)
@@ -151,9 +178,16 @@ class NewCalendar extends React.Component {
     render() {
         return (
             <div>
-                <div>
-                    {this.renderEvent()}
-                </div>
+
+                {
+                    this.state.isAddingEvent && !this.state.isClosingEvent ?
+                        <div>
+                            {this.renderEvent()}
+                        </div>
+                        :
+                        <div></div>
+                }
+
                 <div className="calendar">
                     {this.renderHeader()}
                     {this.renderDays()}
@@ -164,4 +198,4 @@ class NewCalendar extends React.Component {
     }
 }
 
-export default NewCalendar
+export default Calendar

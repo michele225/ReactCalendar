@@ -1,5 +1,5 @@
 import React from "react";
-import NewCalendar from "./NewCalendar";
+import EventContainer from "./Containers/EventContainer";
 import "./App.css";
 
 class App extends React.Component {
@@ -15,7 +15,7 @@ class App extends React.Component {
                     </div>
                 </header>
                 <main className="mainCalendar">
-                    <NewCalendar />
+                    <EventContainer />
                 </main>
             </div>
         );
