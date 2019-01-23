@@ -1,0 +1,8 @@
+{
+  "id": "com.mattermost.webapp-calendar",
+  "name": "calendar",
+  "description": "",
+  "webapp": {
+    "bundle_path": "main.js"
+  }
+}
