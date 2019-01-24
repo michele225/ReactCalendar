@@ -10,8 +10,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addEvent: () => {
-            dispatch(actions.receivedEvent());
+        addEvent: (requestBody) => {
+            dispatch(actions.AsyncCallAddEvent(requestBody));
         }
     }
 }

@@ -134,6 +134,8 @@ class Calendar extends React.Component {
     addEvent = (e) =>{
         e.preventDefault();
         const requestBody = {
+            Canale: 'Town Square',
+            Data: 'Jan-01-2019',
             TypeEevnt: this.getTipeEvent.value,
             Event: this.getEvent.value
         }
