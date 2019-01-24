@@ -107,11 +107,11 @@ class Calendar extends React.Component {
         return(
             <div className="NoteContainer">
                 <div className="container">
-                    <h2 className="Noteh2">Inserisci un evento</h2>
+                    <h2 className="Noteh2">Inserisci un evento in {this.state.selectedDate.toString().substring(4,15)}</h2>
                     <form>
-                        <input type="text" className="email NoteInput" placeholder="Tipo di evento" ref={(input) => this.getTipeEvent = input}/>
+                        <input type="text" className="email NoteInput" placeholder="... Tipo ..." ref={(input) => this.getTipeEvent = input}/>
                         <br/>
-                        <input type="text" className="pwd NoteInput" placeholder="EVENTO" ref={(input) => this.getEvent = input}/>
+                        <input type="text" className="pwd NoteInput" placeholder="... EVENTO ..." ref={(input) => this.getEvent = input}/>
                     </form>
 
                     <br/>
@@ -133,9 +133,16 @@ class Calendar extends React.Component {
 
     addEvent = (e) =>{
         e.preventDefault();
+
+        let newDay;
+        newDay = this.state.selectedDate.toString().substring(4,15);
+        let re = new RegExp(" ", "g");
+        var dayToDb = newDay.replace(re, "-");
+        console.log(dayToDb)
+
         const requestBody = {
             Canale: 'Town Square',
-            Data: 'Jan-01-2019',
+            Data: dayToDb,
             TypeEevnt: this.getTipeEvent.value,
             Event: this.getEvent.value
         }
@@ -154,19 +161,13 @@ class Calendar extends React.Component {
         this.setState({over: true})
     }
 
-    onDateClick = (day, id) => {
+    onDateClick = (day) => {
         this.setState({
             selectedDate: day,
             isAddingEvent : true,
             isClosingEvent: false
 
         });
-        let newDay;
-        newDay = day.toString().substring(4,15);
-        let re = new RegExp(" ", "g");
-        var dayToDb = newDay.replace(re, "-");
-        console.log(dayToDb)
-        console.log(id)
     };
 
     nextMonth = () => {
