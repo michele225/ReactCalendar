@@ -176,9 +176,7 @@
 .calendar .body .cell:hover {
   background: var(--bg-color);
   transition: 0.5s ease-out;
-  background-image: url("./calendar-plus-regular.svg");
-  background-repeat: no-repeat;
-  background-size: 50% 50%;
+
 }
 
 .calendar .body .selected {
@@ -377,3 +375,77 @@
 }
 
 
+.AddEvent{
+  margin-left: 0px;
+  width: 50%;
+  height: 100%;
+  background-image: url("./calendar-plus-regular.svg");
+  background-repeat: no-repeat;
+  background-size: 25% 25%;
+  cursor: pointer;
+  float: left;
+  position: relative;
+
+
+
+}
+/*
+.ViewEvent{
+  width: 50%;
+  margin-left: 50%;
+  height: 100%;
+  position: absolute;
+  float: right;
+  background-image: url("./eye-regular.svg");
+  background-repeat: no-repeat;
+  background-size: 25% 25%;
+  background-position: bottom right;
+  cursor: progress;
+
+
+}
+
+.AddEvent:hover{
+  background-image: url("./calendar-plus-regular.svg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.ViewEvent:hover{
+  background-image: url("./eye-regular.svg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+*/
+
+
+
+/*Lista di eventi in un giorno*/
+/* LIST #2 */
+#list2 {
+  width:320px;
+}
+
+#list2 .olEvents {
+  font-style:italic;
+  font-family:Georgia, Times, serif;
+  font-size:24px;
+  color: #327af1;
+}
+
+#list2 .olEvents .liEvents {
+
+}
+
+#list2 .olEvents .liEvents .pEvents {
+  padding:8px;
+  font-style:normal;
+  font-family:Arial;
+  font-size:15px;
+  color: #000000;
+  border-left: 1px solid #083aff;
+}
+
+#list2 .olEvents .liEvents .pEvents  {
+  display:block;
+}

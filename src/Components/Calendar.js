@@ -17,6 +17,7 @@ class Calendar extends React.Component {
 
 
 
+
     renderHeader() {
         const dateFormat = "MMMM YYYY";
 
@@ -77,6 +78,7 @@ class Calendar extends React.Component {
                 days.push(
 
                     <div id={i}
+
                         className={`colCalendar cell ${
                             !dateFns.isSameMonth(day, monthStart)
                                 ? "disabled"
@@ -86,6 +88,11 @@ class Calendar extends React.Component {
                         onClick={() => this.onDateClick(dateFns.parse(cloneDay), i)}
                         onMouseOver={this.onMouseOver}
                     >
+                        <div className="ViewEvent" >  </div>
+                        <div className="AddEvent"   >  </div>
+
+
+
                         <span className="number">{formattedDate}</span>
 
                         <span className="bg">{formattedDate}</span>
@@ -103,11 +110,11 @@ class Calendar extends React.Component {
         return <div className="body">{rows}</div>;
     }
 
-    renderEvent(){
+    renderAddEvent(){
         return(
             <div className="NoteContainer">
                 <div className="container">
-                    <h2 className="Noteh2">Inserisci un evento in {this.state.selectedDate.toString().substring(4,15)}</h2>
+                    <h2 className="Noteh2">Inserisci un nuovo evento in {this.state.selectedDate.toString().substring(4,15)}</h2>
                     <form>
                         <input type="text" className="email NoteInput" placeholder="... Tipo ..." ref={(input) => this.getTipeEvent = input}/>
                         <br/>
@@ -115,7 +122,7 @@ class Calendar extends React.Component {
                     </form>
 
                     <br/>
-                    <button className="register NoteButton"  onClick={this.addEvent}>
+                    <button className="register NoteButton"  onClick={this.addEvent} >
                         <span className="NoteSpan">Save</span>
                     </button>
                     <button className="signin NoteButton" onClick={this.closeEvent}>
@@ -131,6 +138,62 @@ class Calendar extends React.Component {
         );
     }
 
+    renderAllEvent(){
+        let events = [];
+
+        if(this.props.responseAllEvent && this.props.isSearching) {
+            console.log("dentro IF")
+            for (var i = 0; i < this.props.responseAllEvent.length; i++) {
+                console.log("dentro for")
+                events.push(
+                    <div>
+                        <li className="liEvents">
+                            <p className="pEvents">  <label>Tipo: {this.props.responseAllEvent[i].TypeEevnt} </label>
+                             <br/>
+                            <label> Evento: {this.props.responseAllEvent[i].Event}  </label> </p>
+                        </li>
+                    </div>
+                )
+                console.log("tipo = " + this.props.responseAllEvent[i].TypeEevnt)
+
+                console.log("event = " + this.props.responseAllEvent[i].Event)
+            }
+
+        }
+        return(
+            <div className="NoteContainer">
+                <div className="container">
+                    <h2 className="Noteh2">Eventi del giorno {this.state.selectedDate.toString().substring(4,15)}</h2>
+
+                    <div id="list2">
+                        <ol className="olEvents">
+                            {
+                                events
+                            }
+                        </ol>
+                    </div>
+                    <br/>
+                    <button className="register NoteButton"   >
+                        <span className="NoteSpan">Edit </span>
+                    </button>
+                    <button className="signin NoteButton" onClick={this.closeEvent}>
+                        <span>Close</span>
+                    </button>
+
+                    <div className="reg"></div>
+                    <div className="sig"></div>
+
+                </div>
+            </div>
+        );
+
+
+
+        return(
+          <div> METTERE LA LISTA DEGLI EVENTI RIPRESI DAL DB E COLLEGARLA AL VIEW EVENT....OCCHIO</div>
+        );
+    }
+
     addEvent = (e) =>{
         e.preventDefault();
 
@@ -138,7 +201,6 @@ class Calendar extends React.Component {
         newDay = this.state.selectedDate.toString().substring(4,15);
         let re = new RegExp(" ", "g");
         var dayToDb = newDay.replace(re, "-");
-        console.log(dayToDb)
 
         const requestBody = {
             Canale: 'Town Square',
@@ -146,10 +208,37 @@ class Calendar extends React.Component {
             TypeEevnt: this.getTipeEvent.value,
             Event: this.getEvent.value
         }
-        console.log(this.getTipeEvent.value)
-        console.log(this.getEvent.value)
         this.props.addEvent(requestBody)
     }
+
+
+    showEventDay = (day) =>{
+       const requestBody = {
+            Data: this.trasformDate(day)
+        }
+
+        this.props.showEventDay(requestBody)
+
+    }
+
+    trasformDate = (day) => {
+        let currentDay = day.toString().substring(4,15);
+
+        let re = new RegExp(" ", "g");
+        var date = currentDay.replace(re, "-");
+        let day1 = date.toString().substring(4,6);
+        let month = date.toString().substring(0,3);
+        let year = date.toString().substring(7,11);
+
+        let d=  year + "-" + month + "-" + day1;
+
+        return d;
+
+    }
+
+
+
+
 
     closeEvent = () =>{
         this.setState({
@@ -162,6 +251,7 @@ class Calendar extends React.Component {
     }
 
     onDateClick = (day) => {
+        this.showEventDay(day)
         this.setState({
             selectedDate: day,
             isAddingEvent : true,
@@ -189,7 +279,8 @@ class Calendar extends React.Component {
                 {
                     this.state.isAddingEvent && !this.state.isClosingEvent ?
                         <div>
-                            {this.renderEvent()}
+                            {this.renderAllEvent()}
+                            {this.renderAddEvent()}
                         </div>
                         :
                         <div></div>
