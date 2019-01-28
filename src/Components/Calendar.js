@@ -161,8 +161,8 @@ class Calendar extends React.Component {
 
         }
         return(
-            <div className="NoteContainer">
-                <div className="container">
+            <div className="EventsContainer">
+                <div className="EvContainer">
                     <h2 className="Noteh2">Eventi del giorno {this.state.selectedDate.toString().substring(4,15)}</h2>
 
                     <div id="list2">
@@ -173,10 +173,10 @@ class Calendar extends React.Component {
                         </ol>
                     </div>
                     <br/>
-                    <button className="register NoteButton"   >
-                        <span className="NoteSpan">Edit </span>
+                    <button className="register EventsButton"   >
+                        <span className="EventsSpan">Edit </span>
                     </button>
-                    <button className="signin NoteButton" onClick={this.closeEvent}>
+                    <button className="signin EventsButton" onClick={this.closeEvent}>
                         <span>Close</span>
                     </button>
 
@@ -281,6 +281,7 @@ class Calendar extends React.Component {
                         <div>
                             {this.renderAllEvent()}
                             {this.renderAddEvent()}
+
                         </div>
                         :
                         <div></div>
