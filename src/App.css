@@ -498,3 +498,9 @@
   -webkit-transition: .5s;
   transition: .5s;
 }
+
+.addEventCalendar{
+  cursor: pointer;
+  margin-top: 0%;
+  margin-left: 45%;
+}

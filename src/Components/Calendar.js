@@ -9,10 +9,12 @@ class Calendar extends React.Component {
             currentMonth: new Date(),
             selectedDate: new Date(),
             over: false,
-            isAddingEvent: false,
+            isShowingEvent: false,
             isClosingEvent: false,
             isLoading: false,
             thereIsEvent:false,
+            isAddingEvent: false,
+            isClosingAddEvent: false
         }
     }
 
@@ -108,7 +110,7 @@ class Calendar extends React.Component {
                     >
                         {
                             thereIsEvent[this.trasformDate(cloneDay)]?
-                            <p className=" eventDay fas fa-calendar-day fa-3x"> </p>
+                            <p className=" eventDay fas fa-calendar-day fa-3x" > </p>
 
                             :
                                 <div className="nonCiSono"></div>
@@ -122,7 +124,6 @@ class Calendar extends React.Component {
                     </div>
                 );
                 day = dateFns.addDays(day, 1);
-                console.log(days)
                 thereIsEvent = []
                 i++;
             }
@@ -151,7 +152,7 @@ class Calendar extends React.Component {
                     <button className="register NoteButton"  onClick={this.addEvent} >
                         <span className="NoteSpan">Save</span>
                     </button>
-                    <button className="signin NoteButton" onClick={this.closeEvent}>
+                    <button className="signin NoteButton" onClick={this.closeAddEvent}>
                         <span>Close</span>
                     </button>
                     <h3 className="Noteh3">Evento aggiunto con successo :)</h3>
@@ -186,6 +187,7 @@ class Calendar extends React.Component {
             <div className="EventsContainer">
                 <div className="EvContainer">
                     <h2 className="Noteh2">Eventi del giorno {this.state.selectedDate.toString().substring(4,15)}</h2>
+                    <p className=" addEventCalendar far fa-calendar-plus fa-5x " onClick={this.addEventControl}></p>
 
                     <div id="list2">
                         <ol className="olEvents">
@@ -198,7 +200,7 @@ class Calendar extends React.Component {
                     <button className="register EventsButton"   >
                         <span className="EventsSpan">Edit </span>
                     </button>
-                    <button className="signin EventsButton" onClick={this.closeEvent}>
+                    <button className="signin EventsButton" onClick={this.closeShowEvent}>
                         <span>Close</span>
                     </button>
 
@@ -216,9 +218,13 @@ class Calendar extends React.Component {
         );
     }
 
+
+
+
+
     addEvent = (e) =>{
         e.preventDefault();
-
+        console.log("eccolllooo")
         let newDay;
         newDay = this.state.selectedDate.toString().substring(4,15);
         let re = new RegExp(" ", "g");
@@ -304,10 +310,33 @@ class Calendar extends React.Component {
     }
 
 
-    closeEvent = () =>{
+    closeShowEvent = () =>{
         this.setState({
-            isClosingEvent:true
+            isClosingEvent:true,
+            isAddingEvent: false,
+            isShowingEvent: false
         })
+    }
+
+    closeAddEvent = () => {
+        this.setState({
+            isClosingAddEvent: true,
+            isAddingEvent: false,
+            isShowingEvent: true,
+            isClosingEvent: false
+        })
+    }
+
+    addEventControl = () =>{
+        console.log("primooo")
+        this.setState({
+            isAddingEvent: true,
+            isClosingAddEvent: false,
+            isShowingEvent: true,
+            isClosingEvent: false
+
+        })
+        console.log(this.state.isAddingEvent)
     }
 
     /*
@@ -319,9 +348,8 @@ class Calendar extends React.Component {
         this.showEventDay(day)
         this.setState({
             selectedDate: day,
-            isAddingEvent : true,
+            isShowingEvent : true,
             isClosingEvent: false
-
         });
     };
 
@@ -343,18 +371,26 @@ class Calendar extends React.Component {
         if (this.props.responseAllEventBetweenDate && !this.props.isLoading) {
             renderCells = this.renderCells()
         }else renderCells = <div>Sto Caricando</div>*/
+        console.log(this.state)
         return (
             <div>
 
                 {
-                    this.state.isAddingEvent && !this.state.isClosingEvent ?
+                    this.state.isShowingEvent && !this.state.isClosingEvent ?
                         <div>
                             {this.renderAllEvent()}
-                            {this.renderAddEvent()}
 
                         </div>
                         :
                         <div></div>
+                }
+                {
+                        this.state.isShowingEvent && !this.state.isClosingEvent && !this.state.isClosingAddEvent && this.state.isAddingEvent?
+                            <div>
+                                {this.renderAddEvent()}
+                            </div>
+                            :
+                            <div></div>
                 }
 
                 <div className="calendar">
