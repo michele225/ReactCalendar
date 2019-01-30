@@ -3,7 +3,6 @@ import dateFns from "date-fns";
 
 class Calendar extends React.Component {
 
-
     constructor(props){
         super(props);
         this.state = {
@@ -11,12 +10,11 @@ class Calendar extends React.Component {
             selectedDate: new Date(),
             over: false,
             isAddingEvent: false,
-            isClosingEvent: false
+            isClosingEvent: false,
+            isLoading: false,
+            thereIsEvent:false,
         }
     }
-
-
-
 
     renderHeader() {
         const dateFormat = "MMMM YYYY";
@@ -49,13 +47,15 @@ class Calendar extends React.Component {
                 <div id={i} className="colCalendar colCalendar-center" key={i}>
                     {dateFns.format(dateFns.addDays(startDate, i), dateFormat)}
                 </div>
-            );
+            )
+            //console.log(dateFns.format(dateFns.addDays(startDate, i), dateFormat))
         }
 
         return <div className="days rowCalendar">{days}</div>;
     }
 
     renderCells() {
+
         const { currentMonth, selectedDate } = this.state;
         const monthStart = dateFns.startOfMonth(currentMonth);
         const monthEnd = dateFns.endOfMonth(monthStart);
@@ -64,17 +64,34 @@ class Calendar extends React.Component {
 
         const dateFormat = "D";
         const rows = [];
+        const requestBody = {
+            DataInizio: this.trasformDate(startDate),
+            DataFine: this.trasformDate(endDate)
+        }
+        if (!this.state.isLoading){
+            this.props.asyncCallGetAllevents(requestBody)
+            this.setState({isLoading:true})
+        }
 
         let days = [];
         let day = startDate;
         let formattedDate = "";
-
+        let thereIsEvent=[]
         while (day <= endDate) {
-
             for (let i = 0; i < 7;) {
                 i++;
                 formattedDate = dateFns.format(day, dateFormat);
+                console.log(formattedDate)
                 const cloneDay = day;
+                if (this.props.responseAllEventBetweenDate != null && !this.props.isLoading){
+                    for (let j=0 ; j< this.props.responseAllEventBetweenDate.length; j++) {
+                        //console.log(this.trasformDate(this.trasformDate(cloneDay)))
+                        if (this.props.responseAllEventBetweenDate[j].Data.substr(0,10) == this.trasformDate(cloneDay)) {
+                            thereIsEvent[this.trasformDate(cloneDay)] = true
+                        }
+                    }
+                }
+                //console.log(this.trasformDate(day) + " " +  thereIsEvent[this.trasformDate(cloneDay)])
                 days.push(
 
                     <div id={i}
@@ -88,8 +105,12 @@ class Calendar extends React.Component {
                         onClick={() => this.onDateClick(dateFns.parse(cloneDay), i)}
                         onMouseOver={this.onMouseOver}
                     >
-                        <div className="ViewEvent" >  </div>
-                        <div className="AddEvent"   >  </div>
+                        {
+                            thereIsEvent[this.trasformDate(cloneDay)]?
+                                <div className="ciSono">Ci sono</div>
+                                :
+                                <div className="nonCiSono"></div>
+                        }
 
 
 
@@ -99,6 +120,8 @@ class Calendar extends React.Component {
                     </div>
                 );
                 day = dateFns.addDays(day, 1);
+                console.log(days)
+                thereIsEvent = []
             }
             rows.push(
                 <div className="rowCalendar" key={day}>
@@ -142,9 +165,7 @@ class Calendar extends React.Component {
         let events = [];
 
         if(this.props.responseAllEvent && this.props.isSearching) {
-            console.log("dentro IF")
             for (var i = 0; i < this.props.responseAllEvent.length; i++) {
-                console.log("dentro for")
                 events.push(
                     <div>
                         <li className="liEvents">
@@ -154,12 +175,10 @@ class Calendar extends React.Component {
                         </li>
                     </div>
                 )
-                console.log("tipo = " + this.props.responseAllEvent[i].TypeEevnt)
-
-                console.log("event = " + this.props.responseAllEvent[i].Event)
             }
 
         }
+
         return(
             <div className="EventsContainer">
                 <div className="EvContainer">
@@ -209,8 +228,8 @@ class Calendar extends React.Component {
             Event: this.getEvent.value
         }
         this.props.addEvent(requestBody)
+        this.setState({isLoading:false})
     }
-
 
     showEventDay = (day) =>{
        const requestBody = {
@@ -222,23 +241,19 @@ class Calendar extends React.Component {
     }
 
     trasformDate = (day) => {
-        let currentDay = day.toString().substring(4,15);
+        let currentDay = day.toISOString().substring(0,10);
 
-        let re = new RegExp(" ", "g");
+        /*let re = new RegExp(" ", "g");
         var date = currentDay.replace(re, "-");
         let day1 = date.toString().substring(4,6);
         let month = date.toString().substring(0,3);
         let year = date.toString().substring(7,11);
 
-        let d=  year + "-" + month + "-" + day1;
+        let d=  year + "-" + month + "-" + day1;*/
 
-        return d;
+        return currentDay;
 
     }
-
-
-
-
 
     closeEvent = () =>{
         this.setState({
@@ -246,9 +261,10 @@ class Calendar extends React.Component {
         })
     }
 
+    /*
     onMouseOver = () => {
         this.setState({over: true})
-    }
+    }*/
 
     onDateClick = (day) => {
         this.showEventDay(day)
@@ -262,7 +278,8 @@ class Calendar extends React.Component {
 
     nextMonth = () => {
         this.setState({
-            currentMonth: dateFns.addMonths(this.state.currentMonth, 1)
+            currentMonth: dateFns.addMonths(this.state.currentMonth, 1),
+            isLoading: false
         });
     };
 
@@ -273,6 +290,10 @@ class Calendar extends React.Component {
     };
 
     render() {
+        /*let renderCells = ""
+        if (this.props.responseAllEventBetweenDate && !this.props.isLoading) {
+            renderCells = this.renderCells()
+        }else renderCells = <div>Sto Caricando</div>*/
         return (
             <div>
 

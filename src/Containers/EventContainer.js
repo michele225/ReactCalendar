@@ -8,7 +8,9 @@ const mapStateToProps = (state) => {
     return {
         responseAddEvent : state.EventReducer.responseAddEvent,
         responseAllEvent : state.EventsDayReducer.responseAllEvent,
-        isSearching: state.EventsDayReducer.isSearching
+        isSearching: state.EventsDayReducer.isSearching,
+        isLoading: state.EventReducer.isLoading,
+        responseAllEventBetweenDate: state.EventReducer.responseAllEventBetweenDate
     };
 };
 
@@ -19,6 +21,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         showEventDay: (day ) => {
             dispatch(actionsDay.AsyncCallAllEventsDay(day));
+        },
+        asyncCallGetAllevents:(requestBody) => {
+            dispatch(actionsDay.asyncCallGetAllevents(requestBody))
         }
     }
 }
