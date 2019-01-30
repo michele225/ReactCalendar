@@ -79,15 +79,16 @@ class Calendar extends React.Component {
         let thereIsEvent=[]
         while (day <= endDate) {
             for (let i = 0; i < 7;) {
-                i++;
+
                 formattedDate = dateFns.format(day, dateFormat);
-                console.log(formattedDate)
                 const cloneDay = day;
+                const myDay = day;
                 if (this.props.responseAllEventBetweenDate != null && !this.props.isLoading){
                     for (let j=0 ; j< this.props.responseAllEventBetweenDate.length; j++) {
                         //console.log(this.trasformDate(this.trasformDate(cloneDay)))
-                        if (this.props.responseAllEventBetweenDate[j].Data.substr(0,10) == this.trasformDate(cloneDay)) {
-                            thereIsEvent[this.trasformDate(cloneDay)] = true
+                        if (this.trasformDateInverse(this.props.responseAllEventBetweenDate[j].Data.substr(0,10)) == this.trasformDate(myDay)) {
+
+                            thereIsEvent[this.trasformDate(myDay)] = true;
                         }
                     }
                 }
@@ -107,8 +108,9 @@ class Calendar extends React.Component {
                     >
                         {
                             thereIsEvent[this.trasformDate(cloneDay)]?
-                                <div className="ciSono">Ci sono</div>
-                                :
+                            <p className=" eventDay fas fa-calendar-day fa-3x"> </p>
+
+                            :
                                 <div className="nonCiSono"></div>
                         }
 
@@ -122,6 +124,7 @@ class Calendar extends React.Component {
                 day = dateFns.addDays(day, 1);
                 console.log(days)
                 thereIsEvent = []
+                i++;
             }
             rows.push(
                 <div className="rowCalendar" key={day}>
@@ -240,20 +243,66 @@ class Calendar extends React.Component {
 
     }
 
-    trasformDate = (day) => {
+   /* trasformDate = (day) => {
         let currentDay = day.toISOString().substring(0,10);
+        return currentDay;
+    }*/
 
-        /*let re = new RegExp(" ", "g");
+    trasformDate = (day) => {
+        let currentDay = day.toString().substring(4,15);
+
+        let re = new RegExp(" ", "g");
         var date = currentDay.replace(re, "-");
         let day1 = date.toString().substring(4,6);
         let month = date.toString().substring(0,3);
         let year = date.toString().substring(7,11);
 
-        let d=  year + "-" + month + "-" + day1;*/
-
-        return currentDay;
+        let d=  year + "-" + month + "-" + day1;
+        return d;
 
     }
+
+
+    trasformDateInverse = (day) => {
+        let currentDay = day.toString().substring(0,10);
+        let re = new RegExp(" ", "g");
+        var date = currentDay.replace(re, "-");
+        let day1 = date.toString().substring(8,10);
+        let month = date.toString().substring(5,7);
+        switch (month) {
+            case '01': month = 'Jan';
+                break;
+            case '02': month = 'Feb';
+                break;
+            case '03': month = 'Mar';
+                break;
+            case '04': month = 'Apr';
+                break;
+            case '05': month = 'May';
+                break;
+            case '06': month = 'Jun';
+                break;
+            case '07': month = 'Jul';
+                break;
+            case '08': month = 'Aug';
+                break;
+            case '09': month = 'Sep';
+                break;
+            case '10': month = 'Oct';
+                break;
+            case '11': month = 'Nov';
+                break;
+            case '12': month = 'Dec';
+                break;
+        }
+        let year = date.toString().substring(0,4);
+
+        let d=  year + "-" + month + "-" + day1;
+
+        return d;
+
+    }
+
 
     closeEvent = () =>{
         this.setState({
