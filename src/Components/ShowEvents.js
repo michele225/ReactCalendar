@@ -6,7 +6,7 @@ class ShowEvents extends Component {
     constructor(props){
         super(props);
         this.state = {
-
+            isAddingEvent : false
         }
     }
 
@@ -16,9 +16,9 @@ class ShowEvents extends Component {
     }
 
     addEventControl = () =>{
-        console.log(this.state.isShowingEvent)
-        this.setState({
-        })
+        console.log("ADDING" + this.props.isAddingEvent)
+
+        this.props.openAddingEvent()
     }
 
 
@@ -47,7 +47,6 @@ class ShowEvents extends Component {
 
         }
 
-        console.log(this.state)
         return(
 
         <div>
@@ -77,8 +76,12 @@ class ShowEvents extends Component {
 
                                 </div>
                                 </div>
-                            {<AddEventContainer selectedDate={this.props.selectedDate}/>}
-
+            {
+                this.props.isAddingEvent?
+                    <AddEventContainer selectedDate={this.props.selectedDate}/>
+                    :
+                   <div></div>
+            }
 
         </div>
 

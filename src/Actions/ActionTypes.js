@@ -6,6 +6,8 @@ export default keyMirror({
     EVENTS_DAY_BETWEEN_DATE: null,
     DELETE_FILE: null,
     OPEN_EVENTS: null,
-    CLOSE_EVENTS: null
+    CLOSE_EVENTS: null,
+    SHOW_ADDING_EVENT: null,
+    NO_SHOW_ADDING_EVENT: null
 
 })

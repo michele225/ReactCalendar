@@ -1,12 +1,17 @@
 import { connect } from 'react-redux';
 import ShowEvents from "../Components/ShowEvents";
+
+import * as actions from "../Actions/EventAction";
 import * as actionsDay from "../Actions/EventsDayActions";
+
 
 const mapStateToProps = (state) => {
     return {
         responseAllEvent : state.EventsDayReducer.responseAllEvent,
         isSearching: state.EventsDayReducer.isSearching,
-        isShowingEvent: state.EventsDayReducer.isShowingEvent
+        isShowingEvent: state.EventsDayReducer.isShowingEvent,
+        isAddingEvent: state.EventsDayReducer.isAddingEvent,
+
     };
 };
 
@@ -19,6 +24,10 @@ const mapDispatchToProps = (dispatch) => {
         closeEvent: ( ) => {
             dispatch(actionsDay.closeEvent());
         },
+        openAddingEvent: ( ) => {
+            dispatch(actions.openAddingEvent());
+        },
+
     }
 }
 

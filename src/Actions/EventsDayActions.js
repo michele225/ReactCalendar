@@ -59,3 +59,6 @@ export const receivedEventBetweenDate = (obj) => ({
         type: ActionTypes.CLOSE_EVENTS,
 
     })
+
+
+

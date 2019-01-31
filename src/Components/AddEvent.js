@@ -5,12 +5,7 @@ class AddEvent extends Component {
     constructor(props){
         super(props);
         this.state = {
-            isShowingEvent: false,
-            isClosingEvent: false,
-            isLoading: false,
-            thereIsEvent:false,
-            isAddingEvent: false,
-            isClosingAddEvent: false
+            isAddingEvent: false
         }
     }
 
@@ -41,15 +36,11 @@ class AddEvent extends Component {
        }*/
 
 
-
-    closeAddEvent = () => {
-        this.setState({
-            isClosingAddEvent: true,
-            isAddingEvent: false,
-            isShowingEvent: true,
-            isClosingEvent: false
-        })
+    closeAddingEvent = () => {
+        console.log("closure " + this.props.isAddingEvent)
+        this.props.closeAddingEvent()
     }
+
 
     render() {
         return(
@@ -66,7 +57,7 @@ class AddEvent extends Component {
                     <button className="register NoteButton"  onClick={this.addEvent} >
                         <span className="NoteSpan">Save</span>
                     </button>
-                    <button className="signin NoteButton" onClick={this.closeAddEvent}>
+                    <button className="signin NoteButton" onClick={this.closeAddingEvent}>
                         <span>Close</span>
                     </button>
                     <h3 className="Noteh3">Evento aggiunto con successo :)</h3>

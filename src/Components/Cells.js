@@ -83,9 +83,10 @@ class Cells extends Component {
         this.setState({
             selectedDate: day,
         });
-        console.log(this.state.isShowingEvent)
         this.showEventDay(day)
     };
+
+
 
     render() {
         const monthStart = dateFns.startOfMonth(this.props.currentMonth);
@@ -160,6 +161,7 @@ class Cells extends Component {
             );
             days = [];
         }
+        console.log("evento" + this.props.isShowingEvent)
         return (
             <div>
                 {

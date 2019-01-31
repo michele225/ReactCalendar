@@ -4,7 +4,9 @@ import React from "react";
 const initialState = {
     responseAllEvent: [],
     isSearching: false,
-    isShowingEvent: false
+    isShowingEvent: false,
+    isAddingEvent: false
+
 }
 
 const EventDayReducer = (state = initialState , action) => {
@@ -19,6 +21,12 @@ const EventDayReducer = (state = initialState , action) => {
 
         case ActionTypes.CLOSE_EVENTS:
             return { ...state, isShowingEvent: false};
+
+        case ActionTypes.SHOW_ADDING_EVENT:
+            return { ...state, isAddingEvent: true};
+
+        case ActionTypes.NO_SHOW_ADDING_EVENT:
+            return { ...state, isAddingEvent: false};
 
         default:
             return state;

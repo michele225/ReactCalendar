@@ -16,6 +16,9 @@ class Calendar extends React.Component {
         }
     }
 
+
+
+
     renderHeader() {
         const dateFormat = "MMMM YYYY";
 
@@ -45,7 +48,7 @@ class Calendar extends React.Component {
 
         return <CellsContainer currentMonth={ this.state.currentMonth} selectedDate={ this.state.selectedDate}/>;
     }
-
+/*
     renderAddEvent(){
         return(
             <div className="NoteContainer">
@@ -73,6 +76,7 @@ class Calendar extends React.Component {
             </div>
         );
     }
+    */
 
     renderAllEvent(){
 
