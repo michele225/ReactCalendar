@@ -3,7 +3,8 @@ import React from "react";
 
 const initialState = {
     responseAllEvent: [],
-    isSearching: false
+    isSearching: false,
+    isShowingEvent: false
 }
 
 const EventDayReducer = (state = initialState , action) => {
@@ -12,6 +13,12 @@ const EventDayReducer = (state = initialState , action) => {
         case ActionTypes.EVENTS_DAY:
 
             return { ...state, responseAllEvent: action.payload.newValue, isSearching: true};
+
+        case ActionTypes.OPEN_EVENTS:
+            return { ...state, isShowingEvent: true};
+
+        case ActionTypes.CLOSE_EVENTS:
+            return { ...state, isShowingEvent: false};
 
         default:
             return state;

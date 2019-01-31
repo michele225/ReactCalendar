@@ -1,29 +1,25 @@
 import { connect } from 'react-redux';
-import * as actions from '../Actions/EventAction';
 import * as actionsDay from '../Actions/EventsDayActions';
+import * as actionsDelete from '../Actions/DeleteAction';
+
 
 import Calendar from '../Components/Calendar'
 
 const mapStateToProps = (state) => {
     return {
-        responseAddEvent : state.EventReducer.responseAddEvent,
-        responseAllEvent : state.EventsDayReducer.responseAllEvent,
-        isSearching: state.EventsDayReducer.isSearching,
-        isLoading: state.EventReducer.isLoading,
-        responseAllEventBetweenDate: state.EventReducer.responseAllEventBetweenDate
+
+        responseDelete: state.DeleteEventReducer.responseDelete
+
+
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addEvent: (requestBody) => {
-            dispatch(actions.AsyncCallAddEvent(requestBody));
-        },
-        showEventDay: (day ) => {
-            dispatch(actionsDay.AsyncCallAllEventsDay(day));
-        },
-        asyncCallGetAllevents:(requestBody) => {
-            dispatch(actionsDay.asyncCallGetAllevents(requestBody))
+
+
+        asyncCallDeleteEvents:(requestBody) => {
+            dispatch(actionsDelete.asyncCallDeleteFile(requestBody))
         }
     }
 }

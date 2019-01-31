@@ -29,7 +29,6 @@ export const receivedAllEvent = (obj) => ({
 export function asyncCallGetAllevents(requestBody) {
     var url = 'http://localhost:3002/getAllAEvents'
 
-    //console.log(JSON.stringify(requestBody))
     return function (dispatch) {
         axios.post(url, JSON.stringify(requestBody))
             .then((result) => {
@@ -49,3 +48,14 @@ export const receivedEventBetweenDate = (obj) => ({
         newValue: obj
     },
 })
+
+
+    export const openEvent = () => ({
+        type: ActionTypes.OPEN_EVENTS,
+
+    })
+
+    export const closeEvent = () => ({
+        type: ActionTypes.CLOSE_EVENTS,
+
+    })
