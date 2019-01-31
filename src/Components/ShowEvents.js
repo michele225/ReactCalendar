@@ -3,6 +3,7 @@ import AddEventContainer from "../Containers/AddEventContainer";
 
 class ShowEvents extends Component {
 
+
     constructor(props){
         super(props);
         this.state = {
@@ -16,9 +17,18 @@ class ShowEvents extends Component {
     }
 
     addEventControl = () =>{
-        console.log("ADDING" + this.props.isAddingEvent)
-
         this.props.openAddingEvent()
+    }
+
+    deleteEvent = () => {
+        console.log("sono in DELETE")
+        console.log(this.props.responseAllEvent[0].Id)
+
+        const requestBody = {
+            Id: this.props.responseAllEvent[0].Id
+        }
+
+        this.props.deleteEvent(requestBody)
     }
 
 
@@ -40,7 +50,7 @@ class ShowEvents extends Component {
 
 
                         </li>
-                        <button >DELETE</button>
+                        <button onClick={this.deleteEvent}>DELETE</button>
                     </div>
                 )
             }

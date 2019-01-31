@@ -3,6 +3,8 @@ import ShowEvents from "../Components/ShowEvents";
 
 import * as actions from "../Actions/EventAction";
 import * as actionsDay from "../Actions/EventsDayActions";
+import * as actionsDelete from "../Actions/DeleteAction";
+
 
 
 const mapStateToProps = (state) => {
@@ -11,6 +13,7 @@ const mapStateToProps = (state) => {
         isSearching: state.EventsDayReducer.isSearching,
         isShowingEvent: state.EventsDayReducer.isShowingEvent,
         isAddingEvent: state.EventsDayReducer.isAddingEvent,
+        responseDelete: state.DeleteEventReducer.responseDelete
 
     };
 };
@@ -27,6 +30,9 @@ const mapDispatchToProps = (dispatch) => {
         openAddingEvent: ( ) => {
             dispatch(actions.openAddingEvent());
         },
+        deleteEvent:(id, requestBody) => {
+            dispatch(actionsDelete.asyncCallDeleteEvent(id, requestBody))
+        }
 
     }
 }

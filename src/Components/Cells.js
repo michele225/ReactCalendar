@@ -5,6 +5,8 @@ import ShowEventsContainer from "../Containers/ShowEventsContainer";
 
 class Cells extends Component {
 
+
+
     constructor(props){
         super(props);
         this.state = {
@@ -100,9 +102,9 @@ class Cells extends Component {
             DataInizio: this.trasformDate(startDate),
             DataFine: this.trasformDate(endDate)
         }
-        if (!this.state.isLoading){
+        if (this.props.isLoading){
             this.props.asyncCallGetAllevents(requestBody)
-            this.setState({isLoading:true})
+          //  this.setState({isLoading:true})
         }
 
         let days = [];

@@ -76,7 +76,7 @@ class Calendar extends React.Component {
             </div>
         );
     }
-    */
+
 
     renderAllEvent(){
 
@@ -99,18 +99,6 @@ class Calendar extends React.Component {
 
     }*/
 
-
-
-
-
-
-    /*
-    onMouseOver = () => {
-        this.setState({over: true})
-    }*/
-
-
-
     nextMonth = () => {
         this.setState({
             currentMonth: dateFns.addMonths(this.state.currentMonth, 1),
@@ -125,10 +113,6 @@ class Calendar extends React.Component {
     };
 
     render() {
-        /*let renderCells = ""
-        if (this.props.responseAllEventBetweenDate && !this.props.isLoading) {
-            renderCells = this.renderCells()
-        }else renderCells = <div>Sto Caricando</div>*/
         return (
             <div>
                 <div className="calendar">

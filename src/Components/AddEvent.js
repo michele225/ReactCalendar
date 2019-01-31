@@ -12,9 +12,8 @@ class AddEvent extends Component {
 
     addEvent = (e) =>{
         e.preventDefault();
-        console.log("eccolllooo")
         let newDay;
-        newDay = this.state.selectedDate.toString().substring(4,15);
+        newDay = this.props.selectedDate.toString().substring(4,15);
         let re = new RegExp(" ", "g");
         var dayToDb = newDay.replace(re, "-");
 

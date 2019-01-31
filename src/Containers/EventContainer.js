@@ -1,15 +1,12 @@
 import { connect } from 'react-redux';
-import * as actionsDay from '../Actions/EventsDayActions';
 import * as actionsDelete from '../Actions/DeleteAction';
-
-
-import Calendar from '../Components/Calendar'
+import ShowEvents from "../Components/ShowEvents";
+import Calendar from "../Components/Calendar";
 
 const mapStateToProps = (state) => {
     return {
 
         responseDelete: state.DeleteEventReducer.responseDelete
-
 
     };
 };
@@ -17,10 +14,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
 
-
-        asyncCallDeleteEvents:(requestBody) => {
-            dispatch(actionsDelete.asyncCallDeleteFile(requestBody))
-        }
     }
 }
 

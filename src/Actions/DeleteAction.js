@@ -1,7 +1,7 @@
 import axios from "axios";
 import ActionTypes from "./ActionTypes";
 
-export function asyncCallDeleteFile(data) {
+export function asyncCallDeleteEvent(data) {
     // var url = 'http://smart.nbsgroup.it/plugins/com.mattermost.server-getfilebyid'
     var url = 'http://localhost:3002/deleteEvent'
 
