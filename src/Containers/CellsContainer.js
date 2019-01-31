@@ -9,7 +9,9 @@ const mapStateToProps = (state) => {
         responseAllEventBetweenDate: state.EventReducer.responseAllEventBetweenDate,
         responseAllEvent : state.EventsDayReducer.responseAllEvent,
         isSearching: state.EventsDayReducer.isSearching,
-        isShowingEvent: state.EventsDayReducer.isShowingEvent
+        isShowingEvent: state.EventsDayReducer.isShowingEvent,
+        isLoadingAfterDelete: state.EventReducer.isLoadingAfterDelete,
+
 
     };
 };

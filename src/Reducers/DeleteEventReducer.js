@@ -2,7 +2,7 @@ import ActionTypes from "../Actions/ActionTypes";
 import React from "react";
 
 const initialState = {
-    responseDelete: null
+    responseDelete: null,
 }
 
 const DeleteEventReducer = (state = initialState , action) => {

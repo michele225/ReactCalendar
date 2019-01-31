@@ -6,7 +6,7 @@ import Calendar from "../Components/Calendar";
 const mapStateToProps = (state) => {
     return {
 
-        responseDelete: state.DeleteEventReducer.responseDelete
+        responseDelete: state.EventReducer.responseDelete
 
     };
 };

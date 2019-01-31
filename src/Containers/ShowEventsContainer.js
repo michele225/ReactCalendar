@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
         isSearching: state.EventsDayReducer.isSearching,
         isShowingEvent: state.EventsDayReducer.isShowingEvent,
         isAddingEvent: state.EventsDayReducer.isAddingEvent,
-        responseDelete: state.DeleteEventReducer.responseDelete
+        responseDelete: state.EventReducer.responseDelete
 
     };
 };

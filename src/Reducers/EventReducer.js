@@ -4,7 +4,9 @@ import React from "react";
 const initialState = {
     responseAddEvent: null,
     responseAllEventBetweenDate: null,
-    isLoading: true
+    isLoading: true,
+    responseDelete: null,
+    isLoadingAfterDelete: false
 }
 
 const EventReducer = (state = initialState , action) => {
@@ -15,7 +17,10 @@ const EventReducer = (state = initialState , action) => {
 
         case ActionTypes.EVENTS_DAY_BETWEEN_DATE:
             state.responseAllEventBetweenDate = []
-            return {...state, responseAllEventBetweenDate: state.responseAllEventBetweenDate.concat(action.payload.newValue), isLoading: false}
+            return {...state, responseAllEventBetweenDate: state.responseAllEventBetweenDate.concat(action.payload.newValue), isLoading: false, isLoadingAfterDelete:false}
+
+        case ActionTypes.DELETE_FILE:
+            return { ...state, responseDelete: action.payload.newValue, isLoadingAfterDelete: true};
 
 
         default:

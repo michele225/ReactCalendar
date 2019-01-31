@@ -102,7 +102,8 @@ class Cells extends Component {
             DataInizio: this.trasformDate(startDate),
             DataFine: this.trasformDate(endDate)
         }
-        if (this.props.isLoading){
+
+        if (this.props.isLoading ||  this.props.isLoadingAfterDelete){
             this.props.asyncCallGetAllevents(requestBody)
           //  this.setState({isLoading:true})
         }

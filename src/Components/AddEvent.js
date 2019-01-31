@@ -42,6 +42,7 @@ class AddEvent extends Component {
 
 
     render() {
+
         return(
             <div className="NoteContainer">
                 <div className="container">
