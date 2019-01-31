@@ -71,21 +71,14 @@ class Cells extends Component {
 
     }
 
-    showEventDay = (day) =>{
-        const requestBody = {
-            Data: this.trasformDate(day)
-        }
 
-        this.props.showEventDay(requestBody)
-
-    }
 
     onDateClick = (day) => {
         this.props.openEvent()
         this.setState({
             selectedDate: day,
         });
-        this.showEventDay(day)
+        //this.showEventDay(day)
     };
 
 

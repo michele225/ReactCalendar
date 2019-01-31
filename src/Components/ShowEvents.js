@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AddEventContainer from "../Containers/AddEventContainer";
+import dateFns from "date-fns";
 
 class ShowEvents extends Component {
 
@@ -20,27 +21,63 @@ class ShowEvents extends Component {
         this.props.openAddingEvent()
     }
 
-    deleteEvent = () => {
+    deleteEvent = (id) => {
+        console.log(id)
         console.log("sono in DELETE")
-        console.log(this.props.responseAllEvent[0].Id)
 
         const requestBody = {
-            Id: this.props.responseAllEvent[0].Id
+            Id: id
         }
 
         this.props.deleteEvent(requestBody)
     }
 
+    trasformDate = (day) => {
+        let currentDay = day.toString().substring(4,15);
+        let re = new RegExp(" ", "g");
+        var date = currentDay.replace(re, "-");
+        let day1 = date.toString().substring(4,6);
+        let month = date.toString().substring(0,3);
+        let year = date.toString().substring(7,11);
+
+        let d=  year + "-" + month + "-" + day1;
+        return d;
+
+    }
 
     render() {
-        let events = [];
+        const requestBody = {
+            Data: this.trasformDate(this.props.selectedDate)
+        }
+        if(!this.props.isRefreshing){
+            this.props.showEventDay(requestBody)
+        }
 
+       // let events = [];
+        let events = "";
+
+        console.log("eyety" +this.props.responseAllEvent + this.props.isSearching)
 
         if(this.props.responseAllEvent && this.props.isSearching) {
-            for (var i = 0; i < this.props.responseAllEvent.length; i++) {
-                console.log(this.props.responseAllEvent[i].Id)
-                events.push(
-                    <div key={this.props.responseAllEvent[i].Id}>
+            events = this.props.responseAllEvent.map((event) =>
+                <div key={event.Id}>
+                    <p className="fas fa-calendar-edit"></p>
+
+                    <li className="liEvents">
+                        <p className="pEvents">  <label>Tipo: {event.TypeEevnt} </label>
+                            <br/>
+                            <label> Evento: {event.Event}  </label> </p>
+
+
+                    </li>
+                    <button onClick={() => this.deleteEvent(event.Id)}>DELETE</button>
+                </div>
+            )
+
+            //for (var i = 0; i < this.props.responseAllEvent.length; i++) {
+                //let id = this.props.responseAllEvent[i].Id
+                /*events.push(
+                    <div key={id}>
                         <p className="fas fa-calendar-edit"></p>
 
                         <li className="liEvents">
@@ -50,51 +87,44 @@ class ShowEvents extends Component {
 
 
                         </li>
-                        <button onClick={this.deleteEvent}>DELETE</button>
+                        <button onClick={this.deleteEvent(id)}>DELETE</button>
                     </div>
                 )
-            }
+            }*/
 
         }
 
         return(
-
-        <div>
-
-                            <div className="EventsContainer">
-                                <div className="EvContainer">
-                                    <h2 className="Noteh2">Eventi del giorno {this.props.selectedDate.toString().substring(4,15)}</h2>
-                                    <p className=" addEventCalendar far fa-calendar-plus fa-5x " onClick={this.addEventControl}></p>
-
-                                    <div id="list2">
-                                        <ol className="olEvents">
-                                            {
-                                                events
-                                            }
-                                        </ol>
-                                    </div>
-                                    <br/>
-                                    <button className="register EventsButton"   >
-                                        <span className="EventsSpan">Edit </span>
-                                    </button>
-                                    <button className="signin EventsButton" onClick={this.closeShowEvent}>
-                                        <span>Close</span>
-                                    </button>
-
-                                    <div className="reg"></div>
-                                    <div className="sig"></div>
-
-                                </div>
-                                </div>
-            {
-                this.props.isAddingEvent?
-                    <AddEventContainer selectedDate={this.props.selectedDate}/>
-                    :
-                   <div></div>
-            }
-
-        </div>
-
+            <div>
+                <div className="EventsContainer">
+                    <div className="EvContainer">
+                        <h2 className="Noteh2">Eventi del giorno {this.props.selectedDate.toString().substring(4,15)}</h2>
+                        <p className=" addEventCalendar far fa-calendar-plus fa-5x " onClick={this.addEventControl}></p>
+                        <div id="list2">
+                            <ol className="olEvents">
+                                {
+                                    events
+                                }
+                            </ol>
+                        </div>
+                        <br/>
+                        <button className="register EventsButton"   >
+                            <span className="EventsSpan">Edit </span>
+                        </button>
+                        <button className="signin EventsButton" onClick={this.closeShowEvent}>
+                            <span>Close</span>
+                        </button>
+                        <div className="reg"></div>
+                        <div className="sig"></div>
+                    </div>
+                    </div>
+                {
+                    this.props.isAddingEvent?
+                        <AddEventContainer selectedDate={this.props.selectedDate}/>
+                        :
+                       <div></div>
+                }
+            </div>
         );
 
     }

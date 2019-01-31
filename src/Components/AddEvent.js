@@ -25,6 +25,8 @@ class AddEvent extends Component {
         }
         this.props.addEvent(requestBody)
         this.setState({isLoading:false})
+        this.getTipeEvent.value = ""
+        this.getEvent.value = ""
     }
 
 

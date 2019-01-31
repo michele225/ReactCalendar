@@ -9,12 +9,12 @@ import * as actionsDelete from "../Actions/DeleteAction";
 
 const mapStateToProps = (state) => {
     return {
-        responseAllEvent : state.EventsDayReducer.responseAllEvent,
-        isSearching: state.EventsDayReducer.isSearching,
+        responseAllEvent : state.EventReducer.responseAllEvent,
+        isSearching: state.EventReducer.isSearching,
         isShowingEvent: state.EventsDayReducer.isShowingEvent,
         isAddingEvent: state.EventsDayReducer.isAddingEvent,
-        responseDelete: state.EventReducer.responseDelete
-
+        responseDelete: state.EventReducer.responseDelete,
+        isRefreshing: state.EventReducer.isRefreshing
     };
 };
 
