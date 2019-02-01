@@ -56,10 +56,10 @@ class AddEvent extends Component {
                     </form>
 
                     <br/>
-                    <button className="register NoteButton"  onClick={this.addEvent} >
+                    <button className="register noteButtonSave NoteButton"  onClick={this.addEvent} >
                         <span className="NoteSpan">Save</span>
                     </button>
-                    <button className="signin NoteButton" onClick={this.closeAddingEvent}>
+                    <button className="signin NoteButton noteButtonDelete" onClick={this.closeAddingEvent}>
                         <span>Close</span>
                     </button>
                     <h3 className="Noteh3">Evento aggiunto con successo :)</h3>

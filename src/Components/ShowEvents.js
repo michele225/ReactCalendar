@@ -73,11 +73,10 @@ class ShowEvents extends Component {
 
 
                     </li>
-                    <button onClick={() => this.deleteEvent(event.Id)}>DELETE</button>
-                    <Button variant="outline-success">Success</Button>
 
+                    <button className="buttonEvent button2" onClick={() => this.editEvent(event.Id)}>EDIT</button>
+                    <button className="buttonEvent button3" onClick={() => this.deleteEvent(event.Id)}>DELETE</button>
 
-                    <button onClick={() => this.editEvent(event.Id)}>EDIT</button>
                     {
                         this.props.isEditing && this.props.id == event.Id?
                             <EditEventContainer selectedDate={this.props.selectedDate}  event={event}/>
