@@ -1,19 +1,18 @@
 import { connect } from 'react-redux';
-import * as actionsDelete from '../Actions/DeleteAction';
-import ShowEvents from "../Components/ShowEvents";
 import Calendar from "../Components/Calendar";
+import * as actionsDay from "../Actions/EventsDayActions";
 
 const mapStateToProps = (state) => {
     return {
-
-        responseDelete: state.EventReducer.responseDelete
-
+        isSearching: state.EventReducer.isSearching
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-
+        reloadNewMonth:() => {
+            dispatch(actionsDay.loadNewMonth())
+        }
     }
 }
 

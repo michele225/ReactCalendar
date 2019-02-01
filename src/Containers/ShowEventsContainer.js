@@ -34,9 +34,7 @@ const mapDispatchToProps = (dispatch) => {
         },
         deleteEvent:(requestBody) => {
             dispatch(actionsDelete.asyncCallDeleteEvent(requestBody))
-        },
-
-
+        }
     }
 }
 

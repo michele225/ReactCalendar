@@ -50,15 +50,17 @@ export const receivedEventBetweenDate = (obj) => ({
 })
 
 
-    export const openEvent = () => ({
-        type: ActionTypes.OPEN_EVENTS,
+export const openEvent = () => ({
+    type: ActionTypes.OPEN_EVENTS
+})
 
-    })
+export const closeEvent = () => ({
+    type: ActionTypes.CLOSE_EVENTS
+})
 
-    export const closeEvent = () => ({
-        type: ActionTypes.CLOSE_EVENTS,
-
-    })
+export const loadNewMonth = () => ({
+    type: ActionTypes.LOAD_NEW_MONTH
+})
 
 
 

@@ -100,6 +100,7 @@ class Calendar extends React.Component {
     }*/
 
     nextMonth = () => {
+        this.reloadNewMonth()
         this.setState({
             currentMonth: dateFns.addMonths(this.state.currentMonth, 1),
             isLoading: false
@@ -107,10 +108,16 @@ class Calendar extends React.Component {
     };
 
     prevMonth = () => {
+        this.reloadNewMonth()
         this.setState({
             currentMonth: dateFns.subMonths(this.state.currentMonth, 1)
         });
     };
+
+    reloadNewMonth = () => {
+        this.props.reloadNewMonth()
+    }
+
 
     render() {
         return (

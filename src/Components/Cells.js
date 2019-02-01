@@ -86,6 +86,7 @@ class Cells extends Component {
 
     render() {
         const monthStart = dateFns.startOfMonth(this.props.currentMonth);
+        console.log("INIZIO MESE " +monthStart)
         const monthEnd = dateFns.endOfMonth(monthStart);
         const startDate = dateFns.startOfWeek(monthStart);
         const endDate = dateFns.endOfWeek(monthEnd);
@@ -99,7 +100,7 @@ class Cells extends Component {
 
         if (this.props.isLoading ||  this.props.isLoadingAfterDelete){
             this.props.asyncCallGetAllevents(requestBody)
-          //  this.setState({isLoading:true})
+          //this.setState({isLoading:true})
         }
 
         let days = [];

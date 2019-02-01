@@ -34,6 +34,8 @@ class ShowEvents extends Component {
         })
     }
 
+
+
     trasformDate = (day) => {
         let currentDay = day.toString().substring(4,15);
         let re = new RegExp(" ", "g");

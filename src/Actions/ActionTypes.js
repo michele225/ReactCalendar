@@ -9,6 +9,7 @@ export default keyMirror({
     CLOSE_EVENTS: null,
     SHOW_ADDING_EVENT: null,
     NO_SHOW_ADDING_EVENT: null,
-    EDIT_EVENT: null
+    EDIT_EVENT: null,
+    LOAD_NEW_MONTH: null
 
 })

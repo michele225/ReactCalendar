@@ -34,6 +34,9 @@ const EventReducer = (state = initialState , action) => {
         case ActionTypes.EDIT_EVENT:
             return { ...state, responseEdit: action.payload.newValue};
 
+        case ActionTypes.LOAD_NEW_MONTH:
+            return { ...state, isLoading: true};
+
 
         default:
             return state;
