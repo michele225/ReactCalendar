@@ -10,7 +10,8 @@ const initialState = {
     isLoading: true,
     responseDelete: null,
     isLoadingAfterDelete: false,
-    responseEdit: null
+    responseEdit: null,
+    isEditing: false
 }
 
 const EventReducer = (state = initialState , action) => {
@@ -32,10 +33,16 @@ const EventReducer = (state = initialState , action) => {
             return { ...state, isRefreshing: false};
 
         case ActionTypes.EDIT_EVENT:
-            return { ...state, responseEdit: action.payload.newValue};
+            return { ...state, responseEdit: action.payload.newValue, isEditing: false, isRefreshing: false};
 
         case ActionTypes.LOAD_NEW_MONTH:
             return { ...state, isLoading: true};
+
+        case ActionTypes.CLOSE_EDIT:
+            return { ...state, isEditing: false};
+
+        case ActionTypes.OPEN_EDIT:
+            return { ...state, isEditing: true};
 
 
         default:

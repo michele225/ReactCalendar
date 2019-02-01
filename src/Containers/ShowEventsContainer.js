@@ -15,8 +15,8 @@ const mapStateToProps = (state) => {
         isAddingEvent: state.EventsDayReducer.isAddingEvent,
         responseDelete: state.EventReducer.responseDelete,
         isRefreshing: state.EventReducer.isRefreshing,
-        responseEdit: state.EventReducer.responseEdit
-
+        responseEdit: state.EventReducer.responseEdit,
+        isEditing: state.EventReducer.isEditing
     };
 };
 
@@ -34,7 +34,11 @@ const mapDispatchToProps = (dispatch) => {
         },
         deleteEvent:(requestBody) => {
             dispatch(actionsDelete.asyncCallDeleteEvent(requestBody))
-        }
+        },
+        openEditEvent: ( ) => {
+            dispatch(actions.openEditingEvent());
+        },
+
     }
 }
 

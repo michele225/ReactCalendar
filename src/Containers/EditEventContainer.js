@@ -4,15 +4,21 @@ import EditEvent from "../Components/EditEvent";
 
 const mapStateToProps = (state) => {
     return {
-        responseUpdatePost : state.EventReducer.responseEdit
+        responseUpdatePost : state.EventReducer.responseEdit,
+        isEditing : state.EventReducer.isEditing
+
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        editEvent:(id, requestBody) => {
-            dispatch(actions.asyncCallEditEvent(id, requestBody))
+        editEvent:(requestBody) => {
+            dispatch(actions.asyncCallEditEvent(requestBody))
+        },
+        closeEditingEvent:() => {
+            dispatch(actions.closeEditingEvent())
         }
+
     }
 }
 

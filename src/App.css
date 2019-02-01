@@ -468,6 +468,7 @@
   width:90%;
   height:20%;
   background: #d1f8ff;
+  opacity: 0.9;
   border-radius:5px;
   overflow:hidden;
   z-index:1;
@@ -503,4 +504,150 @@
   cursor: pointer;
   margin-top: 0%;
   margin-left: 45%;
+}
+
+
+/*CSS per editing di un evento*/
+
+
+.EditContainer{
+  margin-top:-50%;
+  margin-left: 60%;
+}
+
+.containerEdit{
+  position:relative;
+  top:0%;
+  left:20%;
+  display:block;
+  margin-bottom:0%;
+  width:300%;
+  height:200px;
+  background:#fff;
+  border-radius:5px;
+  overflow:hidden;
+  z-index:1;
+}
+
+.EditContainer{
+  margin-top:-60%;
+  margin-left: 60%;
+}
+
+.containerEdit{
+  position:relative;
+  top:0%;
+  left:-150%;
+  display:block;
+  margin-bottom:0%;
+  width:300%;
+  height:200px;
+  background:#fff;
+  border-radius:5px;
+  overflow:hidden;
+  z-index:1;
+}
+
+.Noteh2Edit{
+  padding:10px;
+  font-weight:lighter;
+  font-size: 30px;
+  color:#414141;
+  text-align: center;
+}
+
+
+.NoteInputEdit{
+  display:block;
+  height:30%;
+  width:90%;
+  margin:0 auto;
+  border:none;
+
+}
+
+
+
+.emailEdit,
+.pwdEdit{
+  position:relative;
+  z-index:1;
+  border-bottom:1px solid rgba(0,0,0,.1);
+  padding-left:18px;
+  font-family: 'Open Sans', sans-serif;
+  text-transform:uppercase;
+  color:#858585;
+  font-weight:lighter;
+  font-size: 20px;
+  -webkit-transition:.5s;
+  transition:.5s;
+}
+
+
+
+.saveEdit{
+    float: left;
+    position:relative;
+    cursor: pointer;
+    top:0;
+    left:0;
+    -webkit-transform:translateY(-100%) scale(1);
+    transform:translateY(-100%) scale(1);
+    display:block;
+    width:50%;
+    height:100%;
+    border-radius:5px;
+    background: #2b9c27;
+    z-index:5;
+    -webkit-transition:.8s ease-in-out;
+    transition:.8s ease-in-out;
+}
+
+
+
+.closeEdit {
+  position: relative;
+  top:0;
+  right:0;
+  -webkit-transform: translateY(-100%) scale(1);
+  transform: translateY(-100%) scale(1);
+  width: 50%;
+  height: 100%;
+  border-radius: 5px;
+  display: block;
+  background: #ff6a20;
+  z-index: 5;
+  -webkit-transition: .8s ease-in-out;
+  transition: .8s ease-in-out;
+  cursor: pointer;
+}
+
+.NoteButtonEdit {
+  cursor: progress;
+  display: inline-block;
+  float: left;
+  width: 250px;
+  height: 60px;
+  margin-top: -10px;
+  border: none;
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  color: #fff;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.EventSpan{
+  position: relative;
+  display: block;
+  margin: -10px 20%;
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.updateEdit{
+    position: relative;
+    margin-right: 0px;
 }

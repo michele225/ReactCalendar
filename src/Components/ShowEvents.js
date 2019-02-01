@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import AddEventContainer from "../Containers/AddEventContainer";
 import EditEventContainer from "../Containers/EditEventContainer";
 
+import { Button } from 'react-bootstrap';
+
+
 class ShowEvents extends Component {
 
 
     constructor(props){
         super(props);
-        this.state = {
-            isAddingEvent : false,
-            isEditingEvent: false
-        }
+
     }
 
     closeShowEvent = () =>{
@@ -29,9 +29,7 @@ class ShowEvents extends Component {
     }
 
     editEvent = () => {
-        this.setState({
-            isEditingEvent: true
-        })
+       this.props.openEditEvent()
     }
 
 
@@ -75,9 +73,10 @@ class ShowEvents extends Component {
                     </li>
                     <button onClick={() => this.deleteEvent(event.Id)}>DELETE</button>
 
+
                     <button onClick={this.editEvent}>EDIT</button>
                     {
-                        this.state.isEditingEvent?
+                        this.props.isEditing?
                             <EditEventContainer selectedDate={this.props.selectedDate} event={event}/>
                             :
                             <div></div>
@@ -85,24 +84,6 @@ class ShowEvents extends Component {
 
                 </div>
             )
-
-            //for (var i = 0; i < this.props.responseAllEvent.length; i++) {
-                //let id = this.props.responseAllEvent[i].Id
-                /*events.push(
-                    <div key={id}>
-                        <p className="fas fa-calendar-edit"></p>
-
-                        <li className="liEvents">
-                            <p className="pEvents">  <label>Tipo: {this.props.responseAllEvent[i].TypeEevnt} </label>
-                                <br/>
-                                <label> Evento: {this.props.responseAllEvent[i].Event}  </label> </p>
-
-
-                        </li>
-                        <button onClick={this.deleteEvent(id)}>DELETE</button>
-                    </div>
-                )
-            }*/
 
         }
 

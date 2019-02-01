@@ -28,3 +28,8 @@ export const receivedEditResponse = (obj) => ({
         newValue: obj
     },
 });
+
+export const closeEditingEvent = () => ({
+    type: ActionTypes.CLOSE_EDIT,
+
+})

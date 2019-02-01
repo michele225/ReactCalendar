@@ -37,5 +37,9 @@ export const openAddingEvent = () => ({
 
 export const closeAddingEvent = () => ({
     type: ActionTypes.NO_SHOW_ADDING_EVENT,
+})
+
+export const openEditingEvent = () => ({
+    type: ActionTypes.OPEN_EDIT,
 
 })

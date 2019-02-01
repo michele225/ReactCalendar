@@ -23,6 +23,7 @@ class EditEvent extends Component {
         var dayToDb = newDay.replace(re, "-");
 
         const requestBody = {
+            Id: this.props.event.Id,
             Canale: 'Town Square',
             Data: dayToDb,
             TypeEevnt: this.getTipeEvent.value,
@@ -37,29 +38,28 @@ class EditEvent extends Component {
     render() {
 
         return(
-            <div className="NoteContainer">
-                <div className="container">
-                    <h2 className="Noteh2">Modifica l'evento del {this.props.selectedDate.toString().substring(4,15)}</h2>
-                    <form>
-                        <input type="text" className="email NoteInput"  defaultValue = {this.props.event.TypeEevnt} ref={(input) => this.getTipeEvent = input}/>
+                <div className="EditContainer">
+                    <div className="containerEdit">
+                        <h2 className="Noteh2Edit">Editing</h2>
+                        <form>
+                            <input type="text" className="emailEdit NoteInputEdit"  defaultValue = {this.props.event.TypeEevnt} ref={(input) => this.getTipeEvent = input}/>
+                            <br/>
+                            <input type="text" className="pwdEdit NoteInputEdit"defaultValue={this.props.event.Event} ref={(input) => this.getEvent = input}/>
+                        </form>
+
                         <br/>
-                        <input type="text" className="pwd NoteInput"defaultValue={this.props.event.Event} ref={(input) => this.getEvent = input}/>
-                    </form>
+                        <div className="updateEdit">
+                            <button className="saveEdit"  onClick={this.editEvent} >
+                                <span className="EventSpan">V</span>
+                            </button>
+                            <button className="closeEdit" onClick={this.closeEditingEvent}>
+                                <span className="EventSpan">X</span>
+                            </button>
+                        </div>
 
-                    <br/>
-                    <button className="register NoteButton"  onClick={this.editEvent} >
-                        <span className="NoteSpan">Save</span>
-                    </button>
-                    <button className="signin NoteButton" onClick={this.closeEditingEvent}>
-                        <span>Close</span>
-                    </button>
-                    <h3 className="Noteh3">Evento aggiunto con successo :)</h3>
-                    <div className="reg"></div>
-                    <div className="sig"></div>
-
-
+                    </div>
                 </div>
-            </div>
+
         )
     }
 }
