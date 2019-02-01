@@ -78,6 +78,7 @@ class Cells extends Component {
         this.setState({
             selectedDate: day,
         });
+
         //this.showEventDay(day)
     };
 

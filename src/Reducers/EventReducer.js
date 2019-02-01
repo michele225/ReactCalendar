@@ -9,7 +9,8 @@ const initialState = {
     responseAllEventBetweenDate: null,
     isLoading: true,
     responseDelete: null,
-    isLoadingAfterDelete: false
+    isLoadingAfterDelete: false,
+    responseEdit: null
 }
 
 const EventReducer = (state = initialState , action) => {
@@ -26,6 +27,12 @@ const EventReducer = (state = initialState , action) => {
 
         case ActionTypes.DELETE_FILE:
             return { ...state, responseDelete: action.payload.newValue, isLoadingAfterDelete: true, isRefreshing: false};
+
+        case ActionTypes.OPEN_EVENTS:
+            return { ...state, isRefreshing: false};
+
+        case ActionTypes.EDIT_EVENT:
+            return { ...state, responseEdit: action.payload.newValue};
 
 
         default:

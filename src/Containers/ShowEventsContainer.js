@@ -14,7 +14,9 @@ const mapStateToProps = (state) => {
         isShowingEvent: state.EventsDayReducer.isShowingEvent,
         isAddingEvent: state.EventsDayReducer.isAddingEvent,
         responseDelete: state.EventReducer.responseDelete,
-        isRefreshing: state.EventReducer.isRefreshing
+        isRefreshing: state.EventReducer.isRefreshing,
+        responseEdit: state.EventReducer.responseEdit
+
     };
 };
 
@@ -30,9 +32,10 @@ const mapDispatchToProps = (dispatch) => {
         openAddingEvent: ( ) => {
             dispatch(actions.openAddingEvent());
         },
-        deleteEvent:(id, requestBody) => {
-            dispatch(actionsDelete.asyncCallDeleteEvent(id, requestBody))
-        }
+        deleteEvent:(requestBody) => {
+            dispatch(actionsDelete.asyncCallDeleteEvent(requestBody))
+        },
+
 
     }
 }

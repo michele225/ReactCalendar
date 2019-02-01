@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AddEventContainer from "../Containers/AddEventContainer";
-import dateFns from "date-fns";
+import EditEventContainer from "../Containers/EditEventContainer";
 
 class ShowEvents extends Component {
 
@@ -8,10 +8,10 @@ class ShowEvents extends Component {
     constructor(props){
         super(props);
         this.state = {
-            isAddingEvent : false
+            isAddingEvent : false,
+            isEditingEvent: false
         }
     }
-
 
     closeShowEvent = () =>{
         this.props.closeEvent()
@@ -22,14 +22,16 @@ class ShowEvents extends Component {
     }
 
     deleteEvent = (id) => {
-        console.log(id)
-        console.log("sono in DELETE")
-
         const requestBody = {
             Id: id
         }
-
         this.props.deleteEvent(requestBody)
+    }
+
+    editEvent = () => {
+        this.setState({
+            isEditingEvent: true
+        })
     }
 
     trasformDate = (day) => {
@@ -53,7 +55,6 @@ class ShowEvents extends Component {
             this.props.showEventDay(requestBody)
         }
 
-       // let events = [];
         let events = "";
 
         console.log("eyety" +this.props.responseAllEvent + this.props.isSearching)
@@ -71,6 +72,15 @@ class ShowEvents extends Component {
 
                     </li>
                     <button onClick={() => this.deleteEvent(event.Id)}>DELETE</button>
+
+                    <button onClick={this.editEvent}>EDIT</button>
+                    {
+                        this.state.isEditingEvent?
+                            <EditEventContainer selectedDate={this.props.selectedDate} event={event}/>
+                            :
+                            <div></div>
+                    }
+
                 </div>
             )
 
