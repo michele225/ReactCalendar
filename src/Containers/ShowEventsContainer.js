@@ -16,7 +16,9 @@ const mapStateToProps = (state) => {
         responseDelete: state.EventReducer.responseDelete,
         isRefreshing: state.EventReducer.isRefreshing,
         responseEdit: state.EventReducer.responseEdit,
-        isEditing: state.EventReducer.isEditing
+        isEditing: state.EventReducer.isEditing,
+        id: state.EventReducer.id
+
     };
 };
 
@@ -25,7 +27,6 @@ const mapDispatchToProps = (dispatch) => {
         showEventDay: (day ) => {
             dispatch(actionsDay.AsyncCallAllEventsDay(day));
         },
-
         closeEvent: ( ) => {
             dispatch(actionsDay.closeEvent());
         },
@@ -35,10 +36,9 @@ const mapDispatchToProps = (dispatch) => {
         deleteEvent:(requestBody) => {
             dispatch(actionsDelete.asyncCallDeleteEvent(requestBody))
         },
-        openEditEvent: ( ) => {
-            dispatch(actions.openEditingEvent());
-        },
-
+        openEditEvent: (id) => {
+            dispatch(actions.openEditingEvent(id));
+        }
     }
 }
 

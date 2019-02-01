@@ -9,17 +9,12 @@ export function asyncCallEditEvent(data) {
         axios.post(url, JSON.stringify(data))
             .then((result) => {
                 const response = result.data.Response;
-                console.log(response)
                 dispatch(receivedEditResponse(response))
             })
             .catch((err) => {
                 console.log("Errore: " + err.response.data)
             })
     };
-    console.log(data)
-    return function (dispatch) {
-        dispatch(receivedEditResponse("ok"))
-    }
 }
 
 export const receivedEditResponse = (obj) => ({

@@ -28,8 +28,8 @@ class ShowEvents extends Component {
         this.props.deleteEvent(requestBody)
     }
 
-    editEvent = () => {
-       this.props.openEditEvent()
+    editEvent = (id) => {
+       this.props.openEditEvent(id)
     }
 
 
@@ -56,6 +56,8 @@ class ShowEvents extends Component {
         }
 
         let events = "";
+        let array = [];
+
 
         console.log("eyety" +this.props.responseAllEvent + this.props.isSearching)
 
@@ -72,12 +74,13 @@ class ShowEvents extends Component {
 
                     </li>
                     <button onClick={() => this.deleteEvent(event.Id)}>DELETE</button>
+                    <Button variant="outline-success">Success</Button>
 
 
-                    <button onClick={this.editEvent}>EDIT</button>
+                    <button onClick={() => this.editEvent(event.Id)}>EDIT</button>
                     {
-                        this.props.isEditing?
-                            <EditEventContainer selectedDate={this.props.selectedDate} event={event}/>
+                        this.props.isEditing && this.props.id == event.Id?
+                            <EditEventContainer selectedDate={this.props.selectedDate}  event={event}/>
                             :
                             <div></div>
                     }

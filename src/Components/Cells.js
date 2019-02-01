@@ -164,7 +164,7 @@ class Cells extends Component {
             <div>
                 {
                     this.props.isShowingEvent?
-                        <ShowEventsContainer selectedDate={ this.state.selectedDate} isShowingEvent={this.state.isShowingEvent}/>
+                        <ShowEventsContainer selectedDate={ this.state.selectedDate} isShowingEvent={this.props.isShowingEvent}/>
                         :
                         <div></div>
                 }

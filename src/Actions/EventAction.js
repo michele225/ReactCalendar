@@ -39,7 +39,10 @@ export const closeAddingEvent = () => ({
     type: ActionTypes.NO_SHOW_ADDING_EVENT,
 })
 
-export const openEditingEvent = () => ({
+export const openEditingEvent = (id) => ({
     type: ActionTypes.OPEN_EDIT,
+    payload: {
+        newValue: id
+    },
 
 })
