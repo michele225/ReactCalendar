@@ -49,11 +49,11 @@ class EditEvent extends Component {
 
                         <br/>
                         <div className="updateEdit">
-                            <button className="saveEdit"  onClick={this.editEvent} >
-                                <span className="EventSpan">V</span>
+                            <button className="saveEdit button2"  onClick={this.editEvent} >
+                                <span className="EventSpan">SAVE</span>
                             </button>
-                            <button className="closeEdit" onClick={this.closeEditingEvent}>
-                                <span className="EventSpan">X</span>
+                            <button className="closeEdit button3" onClick={this.closeEditingEvent}>
+                                <span className="EventSpan">CLOSE</span>
                             </button>
                         </div>
 
