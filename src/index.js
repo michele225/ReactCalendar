@@ -4,12 +4,7 @@ import App from "./App";
 import $ from "jquery";
 import { Provider } from 'react-redux';
 import store from './Store/AppStore'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap/dist/css/bootstrap.css';
-
 import './App.css'
-
-
 
 var link = $('<link/>', {
     rel: 'stylesheet',

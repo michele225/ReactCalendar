@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import EditEventContainer from "../Containers/EditEventContainer";
-import EventContainer from "../Containers/EventContainer";
-
 import ReactDOM from "react-dom";
 import {Provider} from "react-redux";
 import store from "../Store/AppStore";
@@ -25,12 +23,9 @@ class Event extends Component {
 
     render() {
 
-        console.log("aaaaaaaaaaaaaaaa" + this.props.event.Id)
         return(
 
             <div>
-            <p className="fas fa-calendar-edit"></p>
-
             <li id="EventoUnico" className="liEvents">
                 <p className="pEvents">  <label>Tipo: {this.props.event.TypeEevnt} </label>
                     <br/>

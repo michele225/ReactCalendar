@@ -38,7 +38,6 @@ class AddEvent extends Component {
 
 
     closeAddingEvent = () => {
-        console.log("closure " + this.props.isAddingEvent)
         this.props.closeAddingEvent()
     }
 
@@ -63,10 +62,6 @@ class AddEvent extends Component {
                         <span>Close</span>
                     </button>
                     <h3 className="Noteh3">Evento aggiunto con successo :)</h3>
-                    <div className="reg"></div>
-                    <div className="sig"></div>
-
-
                 </div>
             </div>
         )

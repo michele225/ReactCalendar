@@ -58,9 +58,6 @@ class ShowEvents extends Component {
         let events = "";
         let array = [];
 
-
-        console.log("eyety" +this.props.responseAllEvent + this.props.isSearching)
-
         if(this.props.responseAllEvent && this.props.isSearching) {
             events = this.props.responseAllEvent.map((event) =>
                 <div key={event.Id}>
@@ -94,7 +91,7 @@ class ShowEvents extends Component {
                 <div className="EventsContainer">
                     <div className="EvContainer">
                         <h2 className="Noteh2">Eventi del giorno {this.props.selectedDate.toString().substring(4,15)}</h2>
-                        <p className=" addEventCalendar far fa-calendar-plus fa-5x " onClick={this.addEventControl}></p>
+                        <p className=" addEventCalendar far fa-calendar-plus fa-3x " onClick={this.addEventControl}></p>
                         <div id="list2">
                             <ol className="olEvents">
                                 {
@@ -103,9 +100,6 @@ class ShowEvents extends Component {
                             </ol>
                         </div>
                         <br/>
-                        <button className="register EventsButton"   >
-                            <span className="EventsSpan">Edit </span>
-                        </button>
                         <button className="signin EventsButton" onClick={this.closeShowEvent}>
                             <span>Close</span>
                         </button>

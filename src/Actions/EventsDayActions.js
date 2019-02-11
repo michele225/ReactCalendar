@@ -4,9 +4,8 @@ import ActionTypes from "./ActionTypes";
 export function AsyncCallAllEventsDay(day) {
     // var url = 'http://smart.nbsgroup.it/plugins/com.mattermost.server-getfilebyid'
     //'http://smart.nbsgroup.it/plugins/com.mattermost.server-dbgetimagebyid'
-    var url = 'http://localhost:3002/getAEventsDay'
-
-    console.log(JSON.stringify(day))
+    var url= 'https://smart.nbsgroup.it/plugins/com.mattermost.server-dbgetaeventsday'
+    //var url = 'http://localhost:3002/getAEventsDay'
     return function (dispatch) {
         axios.post(url, JSON.stringify(day))
             .then((result) => {
@@ -27,7 +26,8 @@ export const receivedAllEvent = (obj) => ({
 });
 
 export function asyncCallGetAllevents(requestBody) {
-    var url = 'http://localhost:3002/getAllAEvents'
+    var url= 'https://smart.nbsgroup.it/plugins/com.mattermost.server-dbgetallevents'
+    //var url = 'http://localhost:3002/getAllAEvents'
 
     return function (dispatch) {
         axios.post(url, JSON.stringify(requestBody))
@@ -39,7 +39,6 @@ export function asyncCallGetAllevents(requestBody) {
                 console.log("Errore: " + err.response.data)
             })
     };
-
 }
 
 export const receivedEventBetweenDate = (obj) => ({
@@ -48,7 +47,6 @@ export const receivedEventBetweenDate = (obj) => ({
         newValue: obj
     },
 })
-
 
 export const openEvent = () => ({
     type: ActionTypes.OPEN_EVENTS

@@ -1,17 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery'
-import App from './App'
-
+import App from "./App";
+import $ from "jquery";
+import { Provider } from 'react-redux';
+import store from './Store/AppStore'
+import './App.css'
 
 // Courtesy of https://feathericons.com/
-const Icon = () => <i className='iconCalendar fa fa-plug'/>;
+const Icon = () => <i className='icon fa fa-plug'/>;
 
 class HelloWorldPlugin {
     initialize(registry)
     {
         registry.registerMainMenuAction (
-            "Blog",
+            "Smart Calendar",
             () => {
                 $('#post-list').css("overflow-y", "scroll");
                 $('#create_post').css("display", "none")
@@ -26,7 +28,9 @@ class HelloWorldPlugin {
                 })
                 $('head').prepend(link);
                 ReactDOM.render(
-                    <App/>,
+                    <Provider store={store}>
+                        <App/>
+                    </Provider>,
                     document.getElementById('post-list')
                 );
             },

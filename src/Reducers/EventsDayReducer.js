@@ -21,6 +21,9 @@ const EventDayReducer = (state = initialState , action) => {
         case ActionTypes.NO_SHOW_ADDING_EVENT:
             return { ...state, isAddingEvent: false};
 
+        case ActionTypes.ADD_EVENT:
+            return { ...state, isAddingEvent: false};
+
         default:
             return state;
     }

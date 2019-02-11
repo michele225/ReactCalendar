@@ -5,8 +5,6 @@ import ShowEventsContainer from "../Containers/ShowEventsContainer";
 
 class Cells extends Component {
 
-
-
     constructor(props){
         super(props);
         this.state = {
@@ -29,7 +27,6 @@ class Cells extends Component {
         return d;
 
     }
-
 
     trasformDateInverse = (day) => {
         let currentDay = day.toString().substring(0,10);
@@ -71,8 +68,6 @@ class Cells extends Component {
 
     }
 
-
-
     onDateClick = (day) => {
         this.props.openEvent()
         this.setState({
@@ -82,15 +77,11 @@ class Cells extends Component {
         //this.showEventDay(day)
     };
 
-
-
     render() {
         const monthStart = dateFns.startOfMonth(this.props.currentMonth);
-        console.log("INIZIO MESE " +monthStart)
         const monthEnd = dateFns.endOfMonth(monthStart);
         const startDate = dateFns.startOfWeek(monthStart);
         const endDate = dateFns.endOfWeek(monthEnd);
-
         const dateFormat = "D";
         const rows = [];
         const requestBody = {
@@ -102,49 +93,38 @@ class Cells extends Component {
             this.props.asyncCallGetAllevents(requestBody)
           //this.setState({isLoading:true})
         }
-
         let days = [];
         let day = startDate;
         let formattedDate = "";
         let thereIsEvent=[]
         while (day <= endDate) {
             for (let i = 0; i < 7;) {
-
                 formattedDate = dateFns.format(day, dateFormat);
                 const cloneDay = day;
                 const myDay = day;
                 if (this.props.responseAllEventBetweenDate != null && !this.props.isLoading){
                     for (let j=0 ; j< this.props.responseAllEventBetweenDate.length; j++) {
                         if (this.trasformDateInverse(this.props.responseAllEventBetweenDate[j].Data.substr(0,10)) == this.trasformDate(myDay)) {
-
                             thereIsEvent[this.trasformDate(myDay)] = true;
                         }
                     }
                 }
                 days.push(
-
                     <div id={i}
-
-                         className={`colCalendar cell ${
+                         className={`colCalendar cellCalendar ${
                              !dateFns.isSameMonth(day, monthStart)
                                  ? "disabled"
                                  : dateFns.isSameDay(day, this.state.selectedDate) ? "selected" : ""
                              }`}
                          key={day}
-                         onClick={() => this.onDateClick(dateFns.parse(cloneDay), i)}
-                    >
+                         onClick={() => this.onDateClick(dateFns.parse(cloneDay), i)}>
                         {
                             thereIsEvent[this.trasformDate(cloneDay)]?
-                                <p className=" eventDay fas fa-calendar-day fa-3x" > </p>
-
+                                <p className=" eventDay far fa-calendar-alt fa-2x" > </p>
                                 :
                                 <div className="nonCiSono"></div>
                         }
-
-
-
                         <span className="number">{formattedDate}</span>
-
                         <span className="bg">{formattedDate}</span>
                     </div>
                 );
@@ -159,7 +139,6 @@ class Cells extends Component {
             );
             days = [];
         }
-        console.log("evento" + this.props.isShowingEvent)
         return (
             <div>
                 {
@@ -168,7 +147,7 @@ class Cells extends Component {
                         :
                         <div></div>
                 }
-                <div className="body">{rows}</div>;
+                <div className="bodyCalendar">{rows}</div>
             </div>
         )
     }

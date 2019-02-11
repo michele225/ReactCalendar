@@ -127,7 +127,7 @@
   border: 1px solid var(--border-color);
 }
 
-.calendar .header {
+.calendar .headerCalendar {
   text-transform: uppercase;
   font-weight: 700;
   font-size: 115%;
@@ -135,22 +135,22 @@
   border-bottom: 1px solid var(--border-color);
 }
 
-.calendar .header .iconCalendar {
+.calendar .headerCalendar .iconCalendar {
   cursor: pointer;
   transition: .15s ease-out;
 }
 
-.calendar .header .iconCalendar:hover {
+.calendar .headerCalendar .iconCalendar:hover {
   transform: scale(1.75);
   transition: .25s ease-out;
   color: var(--main-color);
 }
 
-.calendar .header .iconCalendar:first-of-type {
+.calendar .headerCalendar .iconCalendar:first-of-type {
   margin-left: 1em;
 }
 
-.calendar .header .iconCalendar:last-of-type {
+.calendar .headerCalendar .iconCalendar:last-of-type {
   margin-right: 1em;
 }
 
@@ -163,7 +163,7 @@
   border-bottom: 1px solid var(--border-color);
 }
 
-.calendar .body .cell {
+.calendar .bodyCalendar .cellCalendar {
   position: relative;
   height: 5em;
   border-right: 1px solid var(--border-color);
@@ -173,31 +173,31 @@
   transition: 0.25s ease-out;
 }
 
-.calendar .body .cell:hover {
+.calendar .bodyCalendar .cellCalendar:hover {
   background: var(--bg-color);
   transition: 0.5s ease-out;
 
 }
 
-.calendar .body .selected {
+.calendar .bodyCalendar .selected {
   border-left: 10px solid transparent;
   border-image: linear-gradient(45deg, #1a8fff 0%,#53cbf1 40%);
   border-image-slice: 1;
 }
 
-.calendar .body .rowCalendar {
+.calendar .bodyCalendar .rowCalendar {
   border-bottom: 1px solid var(--border-color);
 }
 
-.calendar .body .rowCalendar:last-child {
+.calendar .bodyCalendar .rowCalendar:last-child {
   border-bottom: none;
 }
 
-.calendar .body .cell:last-child {
+.calendar .bodyCalendar .cellCalendar:last-child {
   border-right: none;
 }
 
-.calendar .body .cell .number {
+.calendar .bodyCalendar .cellCalendar .number {
   position: absolute;
   font-size: 82.5%;
   line-height: 1;
@@ -206,12 +206,12 @@
   font-weight: 700;
 }
 
-.calendar .body .disabled {
+.calendar .bodyCalendar .disabled {
   color: var(--text-color-light);
   pointer-events: none;
 }
 
-.calendar .body .cell .bg {
+.calendar .bodyCalendar .cellCalendar .bg {
   font-weight: 700;
   line-height: 1;
   color: var(--main-color);
@@ -224,12 +224,12 @@
   letter-spacing: -.07em;
 }
 
-.calendar .body .cell:hover .bg, .calendar .body .selected .bg  {
+.calendar .bodyCalendar .cellCalendar:hover .bg, .calendar .bodyCalendar .selected .bg  {
   opacity: 0.05;
   transition: .5s ease-in;
 }
 
-.calendar .body .colCalendar {
+.calendar .bodyCalendar .colCalendar {
   flex-grow: 0;
   flex-basis: calc(100%/7);
   width: calc(100%/7);
@@ -248,8 +248,8 @@
   left:0%;
   display:block;
   margin-bottom:0%;
-  width:100px;
-  height:350px;
+  width:100%;
+  height:400px;
   background: #cbe1ff;
   border-radius:5px;
   overflow:hidden;
@@ -445,7 +445,22 @@
 */
 
 .eventDay{
-  margin-top: 10%;
+  margin-top: 35%;
+  margin-left: 15%;
+}
+
+@media screen and (max-width: 600px) {
+  .eventDay {
+    margin-top: 50%;
+    margin-left: 15%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .eventDay {
+    margin-top: 60%;
+    margin-left: 15%;
+  }
 }
 
 
@@ -456,6 +471,7 @@
 }
 
 #list2 .olEvents {
+  margin-top: -8%;
   font-style:italic;
   font-family:Georgia, Times, serif;
   font-size:24px;
@@ -504,7 +520,7 @@
   cursor: pointer;
   display: inline-block;
   float: left;
-  width: 50%;
+  width: 100%;
   height: 60px;
   margin-top: -10px;
   border: none;
@@ -571,22 +587,29 @@
     width: 50%}
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 800px) {
   .EditContainer {
     margin-top:-50%;
-    margin-left: 50%;
-  width: 34%}
+    margin-left: 90%;
+    width: 60%}
+}
+
+@media screen and (max-width: 650px) {
+  .EditContainer {
+    margin-top:-50%;
+    margin-left: 45%;
+    width: 30%}
 }
 
 
 .containerEdit{
   position:relative;
-  top:0%;
+  top:-20%;
   left:-150%;
   display:block;
   margin-bottom:0%;
-  width:300%;
-  height:200px;
+  width:270%;
+  height:50%;
   background: #acfcff;
   border-color: #2c24ff;
   border-radius:5px;
@@ -635,28 +658,29 @@
     float: left;
     position:relative;
     cursor: pointer;
-    top:0;
+    top:25px;
     left:0;
     -webkit-transform:translateY(-100%) scale(1);
     transform:translateY(-100%) scale(1);
     display:block;
     width:50%;
-    height:100%;
+    height:35px;
     z-index:5;
     -webkit-transition:.8s ease-in-out;
     transition:.8s ease-in-out;
+    text-align:center;
 }
 
 
 
 .closeEdit {
   position: relative;
-  top:0;
+  top:25px;
   right:0;
   -webkit-transform: translateY(-100%) scale(1);
   transform: translateY(-100%) scale(1);
   width: 50%;
-  height: 100%;
+  height:35px;
   display: block;
   z-index: 5;
   -webkit-transition: .8s ease-in-out;
@@ -665,7 +689,6 @@
 }
 
 .NoteButtonEdit {
-  cursor: progress;
   display: inline-block;
   float: left;
   width: 250px;
