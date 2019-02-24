@@ -46,7 +46,7 @@ class AddEvent extends Component {
 
         return(
             <div className="NoteContainer">
-                <div className="container">
+                <div className="containerAddEvent">
                     <h2 className="Noteh2">Inserisci un nuovo evento in {this.props.selectedDate.toString().substring(4,15)}</h2>
                     <form>
                         <input type="text" className="email NoteInput" placeholder="... Tipo ..." ref={(input) => this.getTipeEvent = input}/>

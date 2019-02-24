@@ -242,7 +242,7 @@
   margin-top:-10%;
 }
 
-.container{
+.containerAddEvent{
   position:absolute;
   top:0%;
   left:0%;
@@ -250,7 +250,7 @@
   margin-bottom:0%;
   width:100%;
   height:400px;
-  background: #cbe1ff;
+  background: #ddddd8;
   border-radius:5px;
   overflow:hidden;
   z-index:1;
@@ -508,7 +508,7 @@
   margin-bottom:0%;
   width:90%;
   height:20%;
-  background: #d1f8ff;
+  background: #f4f4ef;
   opacity: 0.9;
   border-radius:5px;
   overflow:hidden;
@@ -610,7 +610,7 @@
   margin-bottom:0%;
   width:270%;
   height:50%;
-  background: #acfcff;
+  background: #ddddd8;
   border-color: #2c24ff;
   border-radius:5px;
   overflow:hidden;
