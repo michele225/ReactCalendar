@@ -92,6 +92,8 @@ class ShowEvents extends Component {
                     <div className="EvContainer">
                         <h2 className="Noteh2">Eventi del giorno {this.props.selectedDate.toString().substring(4,15)}</h2>
                         <p className=" addEventCalendar far fa-calendar-plus fa-3x " onClick={this.addEventControl}></p>
+
+
                         <div id="list2">
                             <ol className="olEvents">
                                 {
@@ -99,12 +101,13 @@ class ShowEvents extends Component {
                                 }
                             </ol>
                         </div>
+
                         <br/>
+
                         <button className="signin EventsButton" onClick={this.closeShowEvent}>
                             <span>Close</span>
                         </button>
-                        <div className="reg"></div>
-                        <div className="sig"></div>
+
                     </div>
                     </div>
                 {
