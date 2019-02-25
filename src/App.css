@@ -549,13 +549,6 @@
 
 
 /*CSS per editing di un evento*/
-
-
-.EditContainer{
-  margin-top:-50%;
-  margin-left: 60%;
-}
-
 .containerEdit{
   position:relative;
   top:0%;
@@ -568,16 +561,6 @@
   border-radius:5px;
   overflow:hidden;
   z-index:1;
-}
-
-
-
-
-.EditContainer{
-  margin-top:-60%;
-  margin-left: 109%;
-  width: 70%;
-
 }
 
 @media screen and (max-width: 700px) {
@@ -755,4 +738,51 @@
 .button3:hover {
   background-color: #f44336;
   color: white;
+}
+
+#navi, .preview {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+}
+
+#appPreview {
+  width: 100%;
+  height: 100%;
+}
+
+.preview {
+  z-index: 10;
+}
+
+.myPost {
+  width: 100%;
+  height: 100%;
+}
+
+.myOpacity {
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,1);
+  opacity: 0.5;
+}
+
+.myForm{
+  z-index: 10;
+  position: absolute;
+  top: 18%;
+  left: 19%;
+  background: white;
+  width: 62%;
+  height: 53%;
+}
+
+.myForm {
+  z-index: 10;
+  position: absolute;
+  left: 40%;
+  background: white;
+  width: auto;
+  border-radius: 30px;
 }

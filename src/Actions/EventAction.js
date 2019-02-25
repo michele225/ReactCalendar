@@ -35,10 +35,10 @@ export const closeAddingEvent = () => ({
     type: ActionTypes.NO_SHOW_ADDING_EVENT,
 })
 
-export const openEditingEvent = (id) => ({
+export const openEditingEvent = (eventCalendar) => ({
     type: ActionTypes.OPEN_EDIT,
     payload: {
-        newValue: id
+        newValue: eventCalendar
     },
 
 })

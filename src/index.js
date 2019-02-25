@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from "./App";
+import AppContainer from "./Containers/AppContainer";
 import $ from "jquery";
 import { Provider } from 'react-redux';
 import store from './Store/AppStore'
@@ -17,7 +17,7 @@ $('head').prepend(link);
 
 ReactDOM.render(
     <Provider store={store}>
-     <App/>
+     <AppContainer/>
     </Provider>,
 
     document.getElementById('root'),

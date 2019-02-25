@@ -10,7 +10,6 @@ class EditEvent extends Component {
         }
     }
 
-
     closeEditingEvent = () => {
         this.props.closeEditingEvent()
     }
@@ -34,12 +33,11 @@ class EditEvent extends Component {
         this.getEvent.value = ""
     }
 
-
     render() {
-
         return(
-                <div className="EditContainer">
-                    <div className="containerEdit">
+                <div className="EditContainer myPost">
+                    <div id="opacita" className="myOpacity"></div>
+                    <div className="containerEdit myForm">
                         <h2 className="Noteh2Edit">Editing</h2>
                         <form>
                             <input type="text" className="emailEdit NoteInputEdit"  defaultValue = {this.props.event.TypeEevnt} ref={(input) => this.getTipeEvent = input}/>

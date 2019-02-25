@@ -36,8 +36,8 @@ const mapDispatchToProps = (dispatch) => {
         deleteEvent:(requestBody) => {
             dispatch(actionsDelete.asyncCallDeleteEvent(requestBody))
         },
-        openEditEvent: (id) => {
-            dispatch(actions.openEditingEvent(id));
+        openEditEvent: (eventCalendar) => {
+            dispatch(actions.openEditingEvent(eventCalendar));
         }
     }
 }

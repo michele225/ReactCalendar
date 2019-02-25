@@ -10,7 +10,6 @@ class ShowEvents extends Component {
 
     constructor(props){
         super(props);
-
     }
 
     closeShowEvent = () =>{
@@ -28,11 +27,16 @@ class ShowEvents extends Component {
         this.props.deleteEvent(requestBody)
     }
 
-    editEvent = (id) => {
+    /*editEvent = (id) => {
        this.props.openEditEvent(id)
+    }*/
+
+    editEvent = (event) => {
+        console.log(event)
+        var eventCalendar = [event, this.props.selectedDate];
+        console.log(eventCalendar)
+        this.props.openEditEvent(eventCalendar)
     }
-
-
 
     trasformDate = (day) => {
         let currentDay = day.toString().substring(4,15);
@@ -54,33 +58,25 @@ class ShowEvents extends Component {
         if(!this.props.isRefreshing){
             this.props.showEventDay(requestBody)
         }
-
         let events = "";
         let array = [];
-
         if(this.props.responseAllEvent && this.props.isSearching) {
             events = this.props.responseAllEvent.map((event) =>
                 <div key={event.Id}>
                     <p className="fas fa-calendar-edit"></p>
-
                     <li className="liEvents">
                         <p className="pEvents">  <label>Tipo: {event.TypeEevnt} </label>
                             <br/>
                             <label> Evento: {event.Event}  </label> </p>
-
-
                     </li>
-
-                    <button className="buttonEvent button2" onClick={() => this.editEvent(event.Id)}>EDIT</button>
+                    <button className="buttonEvent button2" onClick={() => this.editEvent(event)}>EDIT</button>
                     <button className="buttonEvent button3" onClick={() => this.deleteEvent(event.Id)}>DELETE</button>
-
                     {
                         this.props.isEditing && this.props.id == event.Id?
                             <EditEventContainer selectedDate={this.props.selectedDate}  event={event}/>
                             :
                             <div></div>
                     }
-
                 </div>
             )
 

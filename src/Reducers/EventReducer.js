@@ -12,7 +12,10 @@ const initialState = {
     isLoadingAfterDelete: false,
     responseEdit: null,
     isEditing: false,
-    id: null
+    id: null,
+    editFileClicked: false,
+    event: null,
+    selectedDate: null
 }
 
 const EventReducer = (state = initialState , action) => {
@@ -43,7 +46,7 @@ const EventReducer = (state = initialState , action) => {
             return { ...state, isEditing: false};
 
         case ActionTypes.OPEN_EDIT:
-            return { ...state, isEditing: true, id: action.payload.newValue};
+            return { ...state, isEditing: true, event: action.payload.newValue[0], editFileClicked: true, selectedDate: action.payload.newValue[1]};
 
 
         default:
