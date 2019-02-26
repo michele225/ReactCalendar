@@ -11,7 +11,7 @@ class EditEvent extends Component {
     }
 
     componentDidMount() {
-        document.getElementById("opacita").style.marginTop = window.pageYOffset.toString() + "px";
+       // document.getElementById("opacita").style.marginTop = window.pageYOffset.toString() + "px";
     }
 
     closeEditingEvent = () => {
@@ -38,7 +38,7 @@ class EditEvent extends Component {
     }
 
     render() {
-        document.body.style.overflowY = "hidden";
+     //   document.body.style.overflowY = "hidden";
         return(
                 <div id ="opacita" className="EditContainer myPost">
                     <div  className="myOpacity"></div>
