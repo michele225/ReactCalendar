@@ -5,7 +5,8 @@ const mapStateToProps = (state) => {
     return {
         editFileClicked: state.EventReducer.editFileClicked,
         event: state.EventReducer.event,
-        selectedDate: state.EventReducer.selectedDate
+        selectedDate: state.EventReducer.selectedDate,
+        isAddingEvent: state.EventsDayReducer.isAddingEvent,
     }
 };
 

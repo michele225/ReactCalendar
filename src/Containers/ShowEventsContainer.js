@@ -38,6 +38,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         openEditEvent: (eventCalendar) => {
             dispatch(actions.openEditingEvent(eventCalendar));
+        },
+        saveSelectedDate: (selectedDate) => {
+            dispatch(actionsDay.saveSelectedDate(selectedDate))
         }
     }
 }

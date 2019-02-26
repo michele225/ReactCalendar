@@ -37,17 +37,19 @@ const EventReducer = (state = initialState , action) => {
             return { ...state, isRefreshing: false};
 
         case ActionTypes.EDIT_EVENT:
-            return { ...state, responseEdit: action.payload.newValue, isEditing: false, isRefreshing: false};
+            return { ...state, responseEdit: action.payload.newValue, isEditing: false, isRefreshing: false, editFileClicked: false};
 
         case ActionTypes.LOAD_NEW_MONTH:
             return { ...state, isLoading: true};
 
         case ActionTypes.CLOSE_EDIT:
-            return { ...state, isEditing: false};
+            return { ...state, isEditing: false, editFileClicked: false};
 
         case ActionTypes.OPEN_EDIT:
-            return { ...state, isEditing: true, event: action.payload.newValue[0], editFileClicked: true, selectedDate: action.payload.newValue[1]};
+            return { ...state, isEditing: true, event: action.payload.newValue, editFileClicked: true};
 
+        case ActionTypes.SAVE_SELECTED_DATE:
+            return { ...state, selectedDate: action.payload.newValue };
 
         default:
             return state;

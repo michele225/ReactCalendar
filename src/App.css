@@ -237,25 +237,6 @@
 
 
 /* Inserimento delle note */
-
-.NoteContainer{
-  margin-top:-10%;
-}
-
-.containerAddEvent{
-  position:absolute;
-  top:0%;
-  left:0%;
-  display:block;
-  margin-bottom:0%;
-  width:100%;
-  height:400px;
-  background: #ddddd8;
-  border-radius:5px;
-  overflow:hidden;
-  z-index:1;
-}
-
 .Noteh2{
   padding:40px;
   font-weight:lighter;
@@ -573,7 +554,6 @@
 @media screen and (max-width: 800px) {
   .EditContainer {
     margin-top:-50%;
-    margin-left: 90%;
     width: 60%}
 }
 
@@ -768,21 +748,70 @@
   opacity: 0.5;
 }
 
-.myForm{
+.myFormEditEvent {
   z-index: 10;
   position: absolute;
-  top: 18%;
-  left: 19%;
-  background: white;
-  width: 62%;
-  height: 53%;
-}
-
-.myForm {
-  z-index: 10;
-  position: absolute;
-  left: 40%;
+  left: 43%;
   background: white;
   width: auto;
   border-radius: 30px;
+  top: 50%;
+  height: 38%;
+}
+@media screen and (max-width: 1750px) {
+  .myFormEditEvent {
+    left: 42%;
+  }
+}
+@media screen and (max-width: 1500px) {
+  .myFormEditEvent {
+    left: 41%;
+  }
+}
+@media screen and (max-width: 1150px) {
+  .myFormEditEvent {
+    left: 38%;
+    left: 38%;
+  }
+}
+
+.myFormAddEvent {
+  z-index: 10;
+  position: absolute;
+  left: 33%;
+  background: white;
+  width: auto;
+  border-radius: 30px;
+  top: 28%;
+  height: 400px
+}
+@media screen and (max-width: 1750px) {
+  .myFormAddEvent {
+    left: 30%;
+  }
+}
+@media screen and (max-width: 1500px) {
+  .myFormAddEvent {
+    left: 25%;
+  }
+}
+@media screen and (max-width: 1150px) {
+  .myFormAddEvent {
+    left: 22%;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .myFormAddEvent {
+    left: 17%;
+  }
+}
+@media screen and (max-width: 850px) {
+  .myFormAddEvent {
+    left: 10%;
+  }
+}
+@media screen and (max-width: 650px) {
+  .myFormAddEvent {
+    left: 0%;
+  }
 }

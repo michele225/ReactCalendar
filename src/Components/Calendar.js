@@ -63,7 +63,6 @@ class Calendar extends React.Component {
         this.props.reloadNewMonth()
     }
 
-
     render() {
         return (
             <div>

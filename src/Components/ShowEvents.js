@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import AddEventContainer from "../Containers/AddEventContainer";
-import EditEventContainer from "../Containers/EditEventContainer";
-
-import { Button } from 'react-bootstrap';
-
 
 class ShowEvents extends Component {
 
-
     constructor(props){
         super(props);
+    }
+
+    componentWillMount() {
+        this.props.saveSelectedDate(this.props.selectedDate)
     }
 
     closeShowEvent = () =>{
@@ -27,15 +25,8 @@ class ShowEvents extends Component {
         this.props.deleteEvent(requestBody)
     }
 
-    /*editEvent = (id) => {
-       this.props.openEditEvent(id)
-    }*/
-
     editEvent = (event) => {
-        console.log(event)
-        var eventCalendar = [event, this.props.selectedDate];
-        console.log(eventCalendar)
-        this.props.openEditEvent(eventCalendar)
+        this.props.openEditEvent(event)
     }
 
     trasformDate = (day) => {
@@ -48,7 +39,6 @@ class ShowEvents extends Component {
 
         let d=  year + "-" + month + "-" + day1;
         return d;
-
     }
 
     render() {
@@ -59,7 +49,6 @@ class ShowEvents extends Component {
             this.props.showEventDay(requestBody)
         }
         let events = "";
-        let array = [];
         if(this.props.responseAllEvent && this.props.isSearching) {
             events = this.props.responseAllEvent.map((event) =>
                 <div key={event.Id}>
@@ -71,50 +60,28 @@ class ShowEvents extends Component {
                     </li>
                     <button className="buttonEvent button2" onClick={() => this.editEvent(event)}>EDIT</button>
                     <button className="buttonEvent button3" onClick={() => this.deleteEvent(event.Id)}>DELETE</button>
-                    {
-                        this.props.isEditing && this.props.id == event.Id?
-                            <EditEventContainer selectedDate={this.props.selectedDate}  event={event}/>
-                            :
-                            <div></div>
-                    }
                 </div>
             )
-
         }
-
         return(
-            <div>
-                <div className="EventsContainer">
-                    <div className="EvContainer">
-                        <h2 className="Noteh2">Eventi del giorno {this.props.selectedDate.toString().substring(4,15)}</h2>
-                        <p className=" addEventCalendar far fa-calendar-plus fa-3x " onClick={this.addEventControl}></p>
-
-
-                        <div id="list2">
-                            <ol className="olEvents">
-                                {
-                                    events
-                                }
-                            </ol>
-                        </div>
-
-                        <br/>
-
-                        <button className="signin EventsButton" onClick={this.closeShowEvent}>
-                            <span>Close</span>
-                        </button>
-
+            <div className="EventsContainer">
+                <div className="EvContainer">
+                    <h2 className="Noteh2">Eventi del giorno {this.props.selectedDate.toString().substring(4,15)}</h2>
+                    <p className=" addEventCalendar far fa-calendar-plus fa-3x " onClick={this.addEventControl}></p>
+                    <div id="list2">
+                        <ol className="olEvents">
+                            {
+                                events
+                            }
+                        </ol>
                     </div>
-                    </div>
-                {
-                    this.props.isAddingEvent?
-                        <AddEventContainer selectedDate={this.props.selectedDate}/>
-                        :
-                       <div></div>
-                }
+                    <br/>
+                    <button className="signin EventsButton" onClick={this.closeShowEvent}>
+                        <span>Close</span>
+                    </button>
+                </div>
             </div>
-        );
-
+        )
     }
 }
 

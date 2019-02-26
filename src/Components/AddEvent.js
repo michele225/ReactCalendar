@@ -9,7 +9,6 @@ class AddEvent extends Component {
         }
     }
 
-
     addEvent = (e) =>{
         e.preventDefault();
         let newDay;
@@ -29,24 +28,15 @@ class AddEvent extends Component {
         this.getEvent.value = ""
     }
 
-
-
-      /* trasformDate = (day) => {
-           let currentDay = day.toISOString().substring(0,10);
-           return currentDay;
-       }*/
-
-
     closeAddingEvent = () => {
         this.props.closeAddingEvent()
     }
 
-
     render() {
-
         return(
-            <div className="NoteContainer">
-                <div className="containerAddEvent">
+            <div className="NoteContainer myPost">
+                <div className="myOpacity"></div>
+                <div className="containerAddEvent myFormAddEvent">
                     <h2 className="Noteh2">Inserisci un nuovo evento in {this.props.selectedDate.toString().substring(4,15)}</h2>
                     <form>
                         <input type="text" className="email NoteInput" placeholder="... Tipo ..." ref={(input) => this.getTipeEvent = input}/>
@@ -67,6 +57,7 @@ class AddEvent extends Component {
         )
     }
 }
+
 export default AddEvent
 
 

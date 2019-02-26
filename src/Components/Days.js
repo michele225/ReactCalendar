@@ -3,7 +3,6 @@ import dateFns from "date-fns";
 
 class Days extends Component {
 
-
     render() {
         const dateFormat = "dddd";
         const days = [];

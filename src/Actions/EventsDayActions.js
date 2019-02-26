@@ -60,5 +60,12 @@ export const loadNewMonth = () => ({
     type: ActionTypes.LOAD_NEW_MONTH
 })
 
+export const saveSelectedDate = (selectedDate) => ({
+    type: ActionTypes.SAVE_SELECTED_DATE,
+    payload: {
+        newValue: selectedDate
+    },
+})
+
 
 

@@ -12,5 +12,6 @@ export default keyMirror({
     EDIT_EVENT: null,
     LOAD_NEW_MONTH: null,
     CLOSE_EDIT: null,
-    OPEN_EDIT: null
+    OPEN_EDIT: null,
+    SAVE_SELECTED_DATE: null
 })
