@@ -41,7 +41,7 @@ class EditEvent extends Component {
      //   document.body.style.overflowY = "hidden";
         return(
                 <div id ="opacita" className="EditContainer myPost">
-                    <div  className="myOpacity"></div>
+                    <div  className="myOpacityCalendar"></div>
                     <div className="containerEdit myFormEditEvent">
                         <h2 className="Noteh2Edit">Editing</h2>
                         <form>
@@ -52,10 +52,10 @@ class EditEvent extends Component {
 
                         <br/>
                         <div className="updateEdit">
-                            <button className="saveEdit button2"  onClick={this.editEvent} >
+                            <button className="saveEdit button2Calendar"  onClick={this.editEvent} >
                                 <span className="EventSpan">SAVE</span>
                             </button>
-                            <button className="closeEdit button3" onClick={this.closeEditingEvent}>
+                            <button className="closeEdit button3Calendar" onClick={this.closeEditingEvent}>
                                 <span className="EventSpan">CLOSE</span>
                             </button>
                         </div>

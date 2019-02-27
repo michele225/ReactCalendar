@@ -58,8 +58,8 @@ class ShowEvents extends Component {
                             <br/>
                             <label> Evento: {event.Event}  </label> </p>
                     </li>
-                    <button className="buttonEvent button2" onClick={() => this.editEvent(event)}>EDIT</button>
-                    <button className="buttonEvent button3" onClick={() => this.deleteEvent(event.Id)}>DELETE</button>
+                    <button className="buttonEvent button2Calendar" onClick={() => this.editEvent(event)}>EDIT</button>
+                    <button className="buttonEvent button3Calendar" onClick={() => this.deleteEvent(event.Id)}>DELETE</button>
                 </div>
             )
         }

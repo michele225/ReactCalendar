@@ -35,7 +35,7 @@ class AddEvent extends Component {
     render() {
         return(
             <div className="NoteContainer myPost">
-                <div className="myOpacity"></div>
+                <div className="myOpacityCalendar"></div>
                 <div className="containerAddEvent myFormAddEvent">
                     <h2 className="Noteh2">Inserisci un nuovo evento in {this.props.selectedDate.toString().substring(4,15)}</h2>
                     <form>
@@ -46,7 +46,7 @@ class AddEvent extends Component {
 
                     <br/>
                     <button className="register noteButtonSave NoteButton"  onClick={this.addEvent} >
-                        <span className="NoteSpan">Save</span>
+                        <span >Save</span>
                     </button>
                     <button className="signin NoteButton noteButtonDelete" onClick={this.closeAddingEvent}>
                         <span>Close</span>
