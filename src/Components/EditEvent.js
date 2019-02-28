@@ -11,7 +11,9 @@ class EditEvent extends Component {
     }
 
     componentDidMount() {
-       // document.getElementById("opacita").style.marginTop = window.pageYOffset.toString() + "px";
+        document.getElementById("opacitaAdd").style.marginTop = (window.pageYOffset.toString() - 50) + "px";
+        document.getElementsByClassName("myOpacityCalendar")[0].style.height = Math.max( document.body.scrollHeight) + "px"
+        //document.getElementsByClassName("myOpacityCalendar")[0].style.height = Math.max( document.getElementById("post-list").scrollHeight) + "px"
     }
 
     closeEditingEvent = () => {
@@ -40,9 +42,9 @@ class EditEvent extends Component {
     render() {
      //   document.body.style.overflowY = "hidden";
         return(
-                <div id ="opacita" className="EditContainer myPost">
+                <div className="EditContainer myPost">
                     <div  className="myOpacityCalendar"></div>
-                    <div className="containerEdit myFormEditEvent">
+                    <div id ="opacita" className="containerEdit myFormEditEvent">
                         <h2 className="Noteh2Edit">Editing</h2>
                         <form>
                             <input type="text" className="emailEdit NoteInputEdit"  defaultValue = {this.props.event.TypeEevnt} ref={(input) => this.getTipeEvent = input}/>
