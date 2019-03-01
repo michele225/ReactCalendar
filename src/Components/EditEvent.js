@@ -11,9 +11,11 @@ class EditEvent extends Component {
     }
 
     componentDidMount() {
-        document.getElementById("opacitaAdd").style.marginTop = (window.pageYOffset.toString() - 50) + "px";
-        document.getElementsByClassName("myOpacityCalendar")[0].style.height = Math.max( document.body.scrollHeight) + "px"
-        //document.getElementsByClassName("myOpacityCalendar")[0].style.height = Math.max( document.getElementById("post-list").scrollHeight) + "px"
+        document.getElementById("opacitaEdit").style.marginTop = document.getElementById("post-list").scrollTop + "px";
+        //document.getElementsByClassName("myOpacityCalendar")[0].style.height = Math.max( document.body.scrollHeight) + "px"
+        document.getElementById("post-list").style.overflowY = "hidden"
+        document.getElementsByClassName("myOpacityCalendarEditEvent")[0].style.marginTop = document.getElementById("post-list").scrollTop + "px"
+
     }
 
     closeEditingEvent = () => {
@@ -40,11 +42,10 @@ class EditEvent extends Component {
     }
 
     render() {
-     //   document.body.style.overflowY = "hidden";
         return(
                 <div className="EditContainer myPost">
-                    <div  className="myOpacityCalendar"></div>
-                    <div id ="opacita" className="containerEdit myFormEditEvent">
+                    <div  className="myOpacityCalendarEditEvent"></div>
+                    <div id ="opacitaEdit" className="containerEdit myFormEditEvent">
                         <h2 className="Noteh2Edit">Editing</h2>
                         <form>
                             <input type="text" className="emailEdit NoteInputEdit"  defaultValue = {this.props.event.TypeEevnt} ref={(input) => this.getTipeEvent = input}/>
@@ -64,7 +65,6 @@ class EditEvent extends Component {
 
                     </div>
                 </div>
-
         )
     }
 }

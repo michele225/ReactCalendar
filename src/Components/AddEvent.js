@@ -10,9 +10,10 @@ class AddEvent extends Component {
     }
 
     componentDidMount() {
-        document.getElementById("opacitaAdd").style.marginTop = (window.pageYOffset.toString() - 50) + "px";
-        document.getElementsByClassName("myOpacityCalendar")[0].style.height = Math.max( document.body.scrollHeight) + "px"
-        //document.getElementsByClassName("myOpacityCalendar")[0].style.height = Math.max( document.getElementById("post-list").scrollHeight) + "px"
+        document.getElementById("opacitaAdd").style.marginTop = document.getElementById("post-list").scrollTop + "px";
+        //document.getElementsByClassName("myOpacityCalendar")[0].style.height = Math.max( document.body.scrollHeight) + "px"
+        document.getElementById("post-list").style.overflowY = "hidden"
+        document.getElementsByClassName("myOpacityCalendarAddEvent")[0].style.marginTop = document.getElementById("post-list").scrollTop + "px"
     }
 
     addEvent = (e) =>{
@@ -41,7 +42,7 @@ class AddEvent extends Component {
     render() {
         return(
             <div className="NoteContainer myPost">
-                <div className="myOpacityCalendar"></div>
+                <div className="myOpacityCalendarAddEvent"></div>
                 <div id="opacitaAdd" className="containerAddEvent myFormAddEvent">
                     <h2 className="Noteh2">Inserisci un nuovo evento in {this.props.selectedDate.toString().substring(4,15)}</h2>
                     <form>

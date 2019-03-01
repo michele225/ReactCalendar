@@ -6,7 +6,8 @@ import AddEventContainer from "../Containers/AddEventContainer";
 class App extends React.Component {
 
     render() {
-        document.body.style.overflowY = "scroll";
+        document.getElementById("post-list").style.overflowY = "scroll"
+       // document.getElementById("post-list").style.overflowY = "scroll"
         //su mattermost va fatto su postlist
         return (
             <div id= "appPreview">
